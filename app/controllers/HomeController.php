@@ -7,4 +7,8 @@ class HomeController extends BaseController {
                         ->with('userType', 'buyer');
     }     
 
+    public function getSignup(){
+    	echo "ytest";
+    }
+
 }

@@ -24,11 +24,10 @@
 <!-- END CORE CSS FRAMEWORK -->
 
 <!-- BEGIN CSS TEMPLATE -->
-<link href="assets/css/style.css" rel="stylesheet" type="text/css"/>
-<link href="assets/css/style.css" rel="stylesheet" type="text/css"/>
-<link href="assets/css/magic_space.css" rel="stylesheet" type="text/css"/>
-<link href="assets/css/responsive.css" rel="stylesheet" type="text/css"/>
-<link href="assets/css/animate.min.css" rel="stylesheet" type="text/css"/>
+<link href="assets/css/public/style.css" rel="stylesheet" type="text/css"/>
+<link href="assets/css/public/magic_space.css" rel="stylesheet" type="text/css"/>
+<link href="assets/css/public/responsive.css" rel="stylesheet" type="text/css"/>
+<link href="assets/css/public/animate.min.css" rel="stylesheet" type="text/css"/>
 <!-- END CSS TEMPLATE -->
 
 <script type="text/javascript" src="assets/plugins/jquery-1.8.3.min.js"></script>

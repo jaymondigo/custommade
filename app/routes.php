@@ -17,7 +17,7 @@ Route::get('member', array('as'=>'member', 'uses'=>'DashboardController@getMembe
 
 Route::controller('session', 'SessionController');
 Route::controller('register', 'RegisterController');
-
+Route::controller('home', 'HomeController');    
 /* start apps routes =============================================== */
 
 Route::group(array('before' => 'auth'), function(){   
