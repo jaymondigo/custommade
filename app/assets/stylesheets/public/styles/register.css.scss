@@ -1,0 +1,32 @@
+.register-container{
+	.bg-white{
+		box-shadow: 12px 12px 20px 0px #1D0E0E;
+		}
+	a, a:hover{color: #865353; text-decoration:none; cursor: pointer; font-weight: bold;}
+	a.register-logo-holder{
+		display: block;
+		width: 50%;
+		margin: 0 auto;
+		padding-bottom: 30px;
+		img{
+			display: block;
+			margin: 0 auto;
+		}
+	}
+	.striped-border{
+		background: url(register/img-border.png) repeat-x;
+		height: 20px;
+	}
+	#signup-form{
+
+		color: #5b708d;
+
+		input{
+			border-radius: 0px;			
+			}
+
+		.user-type, .user-type input{
+				cursor: pointer;
+			}
+		}
+	}

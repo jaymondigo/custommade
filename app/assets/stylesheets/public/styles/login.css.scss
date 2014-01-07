@@ -1,0 +1,22 @@
+html, body{color: #464d5d; height: 100%;}
+.wrapper{
+	background-color: #966B6B;
+	height: 100%;
+}
+.login-holder{
+	max-width: 500px; margin:0px auto; background-color: #fff;
+	padding: 0px 0px;
+	box-shadow: 12px 12px 20px 0px #1D0E0E;
+	.form-holder{padding: 30px;}
+	a, a:hover{font-size: 13px; color: #865353; cursor: pointer; font-weight: bold;}
+	.btn-success{background-color: #83c129; border-color: #83c129}
+	.btn-success:hover{background-color: #76ae25; border-color: #76ae25}
+	.create-account-holder{padding: 30px; background-color: #eee;}
+	.logo{margin: 0px auto; display: block;}
+	.logo-holder{text-align:center;display:block;padding:10px 0px;text-decoration:none;}
+	.logo-holder :hover{text-decoration:none;}
+	.striped-border {
+			background: url(register/img-border.png) repeat-x;
+			height: 20px;
+			}
+}
