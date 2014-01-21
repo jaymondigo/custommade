@@ -284,7 +284,7 @@
             <div class="overlayer bottom-right">
               <div class="overlayer-wrapper">
                   <div class="padding-10 hidden-xs">                  
-                    <button type="button" class="btn btn-primary btn-small"><i class="icon-share"></i>&nbsp;&nbsp;Share</button> <button type="button" class="btn btn-primary btn-small"><i class="icon-heart"></i>&nbsp;&nbsp;Favorite</button> <button type="button" class="btn btn-success btn-small">Contact This maker</button>
+                    <button type="button" class="btn btn-primary btn-small"><i class="icon-share"></i>&nbsp;&nbsp;Share</button> <button type="button" class="btn btn-primary btn-small"><i class="icon-heart"></i>&nbsp;&nbsp;Favorite</button> <button type="button" class="btn btn-success btn-small" data-toggle="modal" data-target="#myModal">Contact This maker</button>
                   </div>
                 </div>
             </div>
@@ -465,6 +465,47 @@
 
       </div>
 
+      <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:9999px;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Contact This maker</h4>
+      </div>
+      <div class="modal-body">
+        <form id="form_iconic_validation" action="#" novalidate="novalidate">
+                      <div class="form-group">
+                        <label class="form-label">Your Name</label>
+                        <span class="help">e.g. "Jonh Smith"</span>
+            <div class="input-with-icon  right">                                       
+              <i class=""></i>
+              <input type="text" name="form1Name" id="form1Name" class="form-control">                                 
+            </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="form-label">Your email</label>
+                        <span class="help">e.g. "john@examp.com"</span>
+            <div class="input-with-icon  right">                                       
+              <i class=""></i>
+              <input type="text" name="form1Email" id="form1Email" class="form-control">                                 
+            </div>
+                      </div>
+                     
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 
 
       </div>
@@ -478,6 +519,14 @@
 <!-- END CONTAINER --> 
 
 <!-- END CONTAINER -->
+
+
+
+
+
+
+
+
 
 <!-- BEGIN CORE JS FRAMEWORK--> 
 <script src="assets/plugins/jquery-1.8.3.min.js" type="text/javascript"></script> 
