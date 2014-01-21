@@ -2,7 +2,7 @@
 
 class HomeController extends BaseController {
     
-    public function getIndex() {
+    public function getIndex() { 
         return View::make('public.index')
                         ->with('userType', 'buyer');
     }     
