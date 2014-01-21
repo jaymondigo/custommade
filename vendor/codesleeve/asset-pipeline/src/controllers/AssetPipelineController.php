@@ -3,7 +3,7 @@
 namespace Codesleeve\AssetPipeline;
 
 use Illuminate\Support\Facades\App;
-use Illuminate\Routing\Controllers\Controller;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Response;
 
 class AssetPipelineController extends Controller {

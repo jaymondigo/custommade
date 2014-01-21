@@ -26,5 +26,7 @@ Route::group(array('before' => 'auth'), function(){
 
 });
 
+Route::any('fb-login', array('as'=>'fb_login','uses'=>'SessionController@loginWithFacebook'));
+Route::any('google-login', array('as'=>'fb_login','uses'=>'SessionController@loginWithGoogle'));
 /*end apps routes====================================================*/
  

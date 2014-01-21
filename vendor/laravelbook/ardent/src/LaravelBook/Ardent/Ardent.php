@@ -225,7 +225,7 @@ abstract class Ardent extends Model {
                 if (method_exists($myself, $method)) {
                     $eventMethod = $rad.$event;
                     self::$eventMethod(function($model) use ($method){
-                        return $model->$method();
+                        return $model->$method($model);
                     });
                 }
             }
@@ -353,9 +353,10 @@ abstract class Ardent extends Model {
 	 *
 	 * @param  string  $related
 	 * @param  string  $foreignKey
+	 * @param  string  $otherKey
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
-	public function belongsTo($related, $foreignKey = null) {
+	public function belongsTo($related, $foreignKey = NULL, $otherKey = NULL, $relation = NULL) {
 		$backtrace = debug_backtrace(false);
 		$caller = ($backtrace[1]['function'] == 'handleRelationalArray')? $backtrace[3] : $backtrace[1];
 
@@ -372,10 +373,12 @@ abstract class Ardent extends Model {
 		// for the related models and returns the relationship instance which will
 		// actually be responsible for retrieving and hydrating every relations.
 		$instance = new $related;
-
+		
+		$otherKey = $otherKey ?: $instance->getKeyName();
+		
 		$query = $instance->newQuery();
 
-		return new BelongsTo($query, $this, $foreignKey, $relation);
+		return new BelongsTo($query, $this, $foreignKey, $otherKey, $relation);
 	}
 
 	/**
@@ -443,6 +446,10 @@ abstract class Ardent extends Model {
         $db->addConnection($connection);
         $db->setEventDispatcher(new Dispatcher(new Container));
         //TODO: configure a cache manager (as an option)
+
+        // Make this Capsule instance available globally via static methods
+        $db->setAsGlobal();
+        
         $db->bootEloquent();
 
         $translator = new Translator('en');
@@ -820,6 +827,19 @@ abstract class Ardent extends Model {
         
         return $this->save($rules, $customMessages, $options, $beforeSave, $afterSave);
     }
+
+	/**
+	 * Validates a model with unique rules properly treated.
+	 *
+	 * @param array $rules Validation rules
+	 * @param array $customMessages Custom error messages
+	 * @return bool
+	 * @see Ardent::validate()
+	 */
+	public function validateUniques(array $rules = array(), array $customMessages = array()) {
+		$rules = $this->buildUniqueExclusionRules($rules);
+		return $this->validate($rules, $customMessages);
+	}
 
     /**
      * Find a model by its primary key.

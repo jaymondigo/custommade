@@ -1,0 +1,76 @@
+
+<!-- saved from url=(0053)https://raw.github.com/laravel/laravel/master/artisan -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">#!/usr/bin/env php
+&lt;?php
+
+/*
+|--------------------------------------------------------------------------
+| Register The Auto Loader
+|--------------------------------------------------------------------------
+|
+| Composer provides a convenient, automatically generated class loader
+| for our application. We just need to utilize it! We'll require it
+| into the script here so that we do not have to worry about the
+| loading of any our classes "manually". Feels great to relax.
+|
+*/
+
+require __DIR__.'/bootstrap/autoload.php';
+
+/*
+|--------------------------------------------------------------------------
+| Turn On The Lights
+|--------------------------------------------------------------------------
+|
+| We need to illuminate PHP development, so let's turn on the lights.
+| This bootstrap the framework and gets it ready for use, then it
+| will load up this application so that we can run it and send
+| the responses back to the browser and delight these users.
+|
+*/
+
+$app = require_once __DIR__.'/bootstrap/start.php';
+
+/*
+|--------------------------------------------------------------------------
+| Load The Artisan Console Application
+|--------------------------------------------------------------------------
+|
+| We'll need to run the script to load and return the Artisan console
+| application. We keep this in its own script so that we will load
+| the console application independent of running commands which
+| will allow us to fire commands from Routes when we want to.
+|
+*/
+
+$app-&gt;setRequestForConsoleEnvironment();
+
+$artisan = Illuminate\Console\Application::start($app);
+
+/*
+|--------------------------------------------------------------------------
+| Run The Artisan Application
+|--------------------------------------------------------------------------
+|
+| When we run the console application, the current CLI command will be
+| executed in this console and the response sent back to a terminal
+| or another output device for the developers. Here goes nothing!
+|
+*/
+
+$status = $artisan-&gt;run();
+
+/*
+|--------------------------------------------------------------------------
+| Shutdown The Application
+|--------------------------------------------------------------------------
+|
+| Once Artisan has finished running. We will fire off the shutdown events
+| so that any final work may be done by the application before we shut
+| down the process. This is the last thing to happen to the request.
+|
+*/
+
+$app-&gt;shutdown();
+
+exit($status);</pre><div class="drop-hint" id="drop-to-share-hint" style="display: none; background-image: url(chrome-extension://cipmepknanmbbaneimacddfemfbfgpgo/images/content/dropToShareHint.png); background-size: 67px 327px;"><a class="share-btn-close"></a><a class="btn-options"></a><div class="drop-hint-bubble" id="drop-hint-bubble-share" style="display: none; background-image: url(chrome-extension://cipmepknanmbbaneimacddfemfbfgpgo/images/content/dropToShareHintBubble.png); background-size: 253px 79px;"></div></div><div class="drop-hint" id="drop-to-search-hint" style="display: none; background-image: url(chrome-extension://cipmepknanmbbaneimacddfemfbfgpgo/images/content/dropToSearchHint.png); background-size: 67px 327px;"><a class="search-btn-close"></a><a class="btn-options"></a><div class="drop-hint-bubble" id="drop-hint-bubble-search" style="display: none; background-image: url(chrome-extension://cipmepknanmbbaneimacddfemfbfgpgo/images/content/dropToSearchHintBubble.png); background-size: 215px 79px;"></div></div><div class="dropAreaContainer" style="display: none; right: 0px;"><div class="searchDropArea" style="width: 142px; height: 174px; background-color: rgba(220, 220, 220, 0.901961);"><span class="disable-manipulations"></span><img src="chrome-extension://cipmepknanmbbaneimacddfemfbfgpgo/images/content/providers/web-search-content.png" width="91" height="81" class="disable-manipulations" style="background-color: transparent;"></div><div class="searchDropArea" style="width: 142px; height: 174px; background-color: rgba(240, 240, 240, 0.901961);"><span class="disable-manipulations"></span><img src="chrome-extension://cipmepknanmbbaneimacddfemfbfgpgo/images/content/providers/video-search-content.png" width="111" height="40" class="disable-manipulations" style="background-color: transparent;"></div><div class="searchDropArea" style="width: 142px; height: 174px; background-color: rgba(220, 220, 220, 0.901961);"><span class="disable-manipulations"></span><img src="chrome-extension://cipmepknanmbbaneimacddfemfbfgpgo/images/content/providers/google-images-content.png" width="102" height="88" class="disable-manipulations" style="background-color: transparent;"></div><div class="searchDropArea" style="width: 142px; height: 174px; background-color: rgba(240, 240, 240, 0.901961);"><span class="disable-manipulations"></span><img src="chrome-extension://cipmepknanmbbaneimacddfemfbfgpgo/images/content/providers/google-translate-content.png" width="111" height="82" class="disable-manipulations" style="background-color: transparent;"></div><div class="searchDropArea" style="width: 142px; height: 174px; background-color: rgba(220, 220, 220, 0.901961);"><span class="disable-manipulations"></span><img src="chrome-extension://cipmepknanmbbaneimacddfemfbfgpgo/images/content/providers/wikipedia-content.png" width="70" height="86" class="disable-manipulations" style="background-color: transparent;"></div><div class="dropAreaSettings" style="width: 142px; height: 82px; background-color: rgba(58, 58, 58, 0.901961);"><span class="disable-manipulations"></span><img src="chrome-extension://cipmepknanmbbaneimacddfemfbfgpgo/images/content/btn_settings.png" width="108" height="25" class="disable-manipulations" style="background-color: transparent;"></div></div><div class="dropAreaContainer" style="display: none; left: 0px;"><div class="shareDropArea" style="width: 142px; height: 174px; background-color: rgba(60, 90, 152, 0.901961);"><span class="disable-manipulations"></span><img src="chrome-extension://cipmepknanmbbaneimacddfemfbfgpgo/images/content/providers/facebook-share-content.png" width="119" height="25" class="disable-manipulations" style="background-color: transparent;"></div><div class="shareDropArea" style="width: 142px; height: 174px; background-color: rgba(233, 246, 255, 0.901961);"><span class="disable-manipulations"></span><img src="chrome-extension://cipmepknanmbbaneimacddfemfbfgpgo/images/content/providers/twitter-content.png" width="120" height="23" class="disable-manipulations" style="background-color: transparent;"></div><div class="shareDropArea" style="width: 142px; height: 174px; background-color: rgba(235, 235, 235, 0.901961);"><span class="disable-manipulations"></span><img src="chrome-extension://cipmepknanmbbaneimacddfemfbfgpgo/images/content/providers/pinterest-content.png" width="112" height="28" class="disable-manipulations" style="background-color: transparent;"></div><div class="shareDropArea" style="width: 142px; height: 174px; background-color: rgba(58, 58, 58, 0.901961);"><span class="disable-manipulations"></span><img src="chrome-extension://cipmepknanmbbaneimacddfemfbfgpgo/images/content/providers/google-plus-center-content.png" width="67" height="56" class="disable-manipulations" style="background-color: transparent;"></div><div class="shareDropArea" style="width: 142px; height: 174px; background-color: rgba(248, 248, 248, 0.901961);"><span class="disable-manipulations"></span><img src="chrome-extension://cipmepknanmbbaneimacddfemfbfgpgo/images/content/providers/linkedin-content.png" width="111" height="31" class="disable-manipulations" style="background-color: transparent;"></div><div class="dropAreaSettings" style="width: 142px; height: 82px; background-color: rgba(58, 58, 58, 0.901961);"><span class="disable-manipulations"></span><img src="chrome-extension://cipmepknanmbbaneimacddfemfbfgpgo/images/content/btn_settings.png" width="108" height="25" class="disable-manipulations" style="background-color: transparent;"></div></div></body></html>

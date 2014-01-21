@@ -156,7 +156,7 @@ class Net_SSH2
      * @var String
      * @access private
      */
-    var $identifier = 'SSH-2.0-phpseclib_0.3';
+    var $identifier;
 
     /**
      * The Socket Object
@@ -919,19 +919,7 @@ class Net_SSH2
             return false;
         }
 
-        $ext = array();
-        if (extension_loaded('mcrypt')) {
-            $ext[] = 'mcrypt';
-        }
-        if (extension_loaded('gmp')) {
-            $ext[] = 'gmp';
-        } else if (extension_loaded('bcmath')) {
-            $ext[] = 'bcmath';
-        }
-
-        if (!empty($ext)) {
-            $this->identifier.= ' (' . implode(', ', $ext) . ')';
-        }
+        $this->identifier = $this->_generate_identifier();
 
         if (defined('NET_SSH2_LOGGING')) {
             $this->_append_log('<-', $extra . $temp);
@@ -966,6 +954,36 @@ class Net_SSH2
         }
 
         $this->bitmap = NET_SSH2_MASK_CONSTRUCTOR;
+    }
+
+    /**
+     * Generates the SSH identifier
+     *
+     * You should overwrite this method in your own class if you want to use another identifier
+     *
+     * @access protected
+     * @return String
+     */
+    function _generate_identifier()
+    {
+        $identifier = 'SSH-2.0-phpseclib_0.3';
+
+        $ext = array();
+        if (extension_loaded('mcrypt')) {
+            $ext[] = 'mcrypt';
+        }
+
+        if (extension_loaded('gmp')) {
+            $ext[] = 'gmp';
+        } elseif (extension_loaded('bcmath')) {
+            $ext[] = 'bcmath';
+        }
+
+        if (!empty($ext)) {
+            $identifier .= ' (' . implode(', ', $ext) . ')';
+        }
+
+        return $identifier;
     }
 
     /**
@@ -3624,7 +3642,15 @@ class Net_SSH2
      */
     function _is_includable($suffix)
     {
-        foreach (explode(PATH_SEPARATOR, get_include_path()) as $prefix) {
+        // stream_resolve_include_path was introduced in PHP 5.3.2
+        if (function_exists('stream_resolve_include_path')) {
+            return stream_resolve_include_path($suffix) !== false;
+        }
+
+        $paths = PATH_SEPARATOR == ':' ?
+            preg_split('#(?<!phar):#', get_include_path()) :
+            explode(PATH_SEPARATOR, get_include_path());
+        foreach ($paths as $prefix) {
             $ds = substr($prefix, -1) == DIRECTORY_SEPARATOR ? '' : DIRECTORY_SEPARATOR;
             $file = $prefix . $ds . $suffix;
 
