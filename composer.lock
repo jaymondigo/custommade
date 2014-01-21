@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "ed471fbf0f7ba7d682d03e67edaeedab",
+    "hash": "f1098e4464620a9ac77a698bd63d613b",
     "packages": [
         {
             "name": "artdarek/oauth-4-laravel",
