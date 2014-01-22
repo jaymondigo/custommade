@@ -2191,5 +2191,59 @@
             "s3",
             "upload"
         ]
+    },
+    {
+        "name": "fitztrev/laravel-html-minify",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/fitztrev/laravel-html-minify.git",
+            "reference": "d6abbd556d005c8d3313024a507a1d25d1ca5d14"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/fitztrev/laravel-html-minify/zipball/d6abbd556d005c8d3313024a507a1d25d1ca5d14",
+            "reference": "d6abbd556d005c8d3313024a507a1d25d1ca5d14",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/view": "4.x"
+        },
+        "require-dev": {
+            "mockery/mockery": "dev-master",
+            "phpunit/phpunit": "3.7.*"
+        },
+        "time": "2014-01-09 18:40:20",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Fitztrev\\LaravelHtmlMinify": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Trevor Fitzgerald",
+                "email": "fitztrev@gmail.com"
+            }
+        ],
+        "description": "Minifies the HTML output of Laravel 4 applications",
+        "homepage": "https://github.com/fitztrev/laravel-html-minify",
+        "keywords": [
+            "L4",
+            "blade",
+            "compress",
+            "html",
+            "laravel",
+            "minifier",
+            "minify",
+            "optimization",
+            "performance"
+        ]
     }
 ]

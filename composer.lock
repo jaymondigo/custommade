@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "d1c7a4e68eb3943f3938f6667ff989cf",
+    "hash": "ed471fbf0f7ba7d682d03e67edaeedab",
     "packages": [
         {
             "name": "artdarek/oauth-4-laravel",
@@ -336,6 +336,58 @@
                 "zf2"
             ],
             "time": "2013-12-04 14:19:30"
+        },
+        {
+            "name": "fitztrev/laravel-html-minify",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fitztrev/laravel-html-minify.git",
+                "reference": "d6abbd556d005c8d3313024a507a1d25d1ca5d14"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fitztrev/laravel-html-minify/zipball/d6abbd556d005c8d3313024a507a1d25d1ca5d14",
+                "reference": "d6abbd556d005c8d3313024a507a1d25d1ca5d14",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/view": "4.x"
+            },
+            "require-dev": {
+                "mockery/mockery": "dev-master",
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Fitztrev\\LaravelHtmlMinify": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Trevor Fitzgerald",
+                    "email": "fitztrev@gmail.com"
+                }
+            ],
+            "description": "Minifies the HTML output of Laravel 4 applications",
+            "homepage": "https://github.com/fitztrev/laravel-html-minify",
+            "keywords": [
+                "L4",
+                "blade",
+                "compress",
+                "html",
+                "laravel",
+                "minifier",
+                "minify",
+                "optimization",
+                "performance"
+            ],
+            "time": "2014-01-09 18:40:20"
         },
         {
             "name": "imagine/imagine",
@@ -2131,7 +2183,8 @@
     "stability-flags": {
         "laravelbook/ardent": 20,
         "artdarek/oauth-4-laravel": 20,
-        "codesleeve/stapler": 20
+        "codesleeve/stapler": 20,
+        "fitztrev/laravel-html-minify": 20
     },
     "platform": [
 
