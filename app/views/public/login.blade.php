@@ -14,7 +14,7 @@
         <div class="col-md-5 col-md-offset-1">
             <h2>Sign in to Custom Made</h2>
             <p>Make a living doing what you love. Be one of our maker now!<br>
-            <a href="#">Sign up Now!</a> for a webarch account,It's free and always will be..</p>
+            <a href="{{URL::to('signup')}}">Sign up Now!</a> for a webarch account,It's free and always will be..</p>
             <br>
             <button class="btn btn-block btn-info col-md-8" type="button">
             <span class="pull-left"><i class="icon-facebook"></i></span>

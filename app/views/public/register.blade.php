@@ -24,7 +24,20 @@
                 <div class="logo-container" style="text-align:center;margin-bottom: 50px;">
                     <a href="index.html"> <img src="assets/logo_new_black.png" style="height: 139px;"></a>
                 </div>
+
                 <form id="signup-form" name="signup_form" class="login-form" action="{{URL::to('/session/signup')}}" method="post" style="margin-left: 80px;">
+
+                     @if(isset($errors[0]))
+                     <div class="row">
+                        <div class="alert alert-danger alert-dismissable col-md-10">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true" style="padding-right:25px;"></button>
+                            @foreach ($errors as $error)
+                                <p>{{$error}}</p>
+                            @endforeach
+                        </div>
+                    </div>
+                    @endif 
+
                     <div class="row" >
                         <div class="form-group col-md-10" ng-class="{'has-error': signup_form.email.$invalid && signup_form.email.$dirty}">
                             <label class="form-label">Email address</label>
@@ -97,10 +110,9 @@
                             <label class="form-label">Password</label>
                             <span class="help"></span>
                             <div class="controls">
-                                <div class="input-with-icon  right">
+                                <div class="input-with-icon right">
                                     <i class=""></i>
-                                    <input type="password" required data-password-verify='password' ng-model="password_verify" name="confirm_password" id="txtpassword" class="form-control"  placeholder="Confirm password"> 
-                                    <small class="error" ng-show="signup_form.confirm_password.$dirty && signup_form.confirm_password.$error.required">Password confirmation is required</small>
+                                    <input type="password" required data-password-verify='password' ng-model="password_verify" name="confirm_password" id="txtpassword" class="form-control"  placeholder="Confirm password">  
                                     <small class="error" ng-show="signup_form.confirm_password.$dirty && signup_form.confirm_password.$error.passwordVerify">Password confirmation did not match</small>       
                                 </div>
                             </div>
@@ -110,20 +122,20 @@
                                     
                     <div class="row">
                         <div class="control-group  col-md-10" ng-class="{'has-error': signup_form.term.$error.dirty}">
-                            <div class="checkbox checkbox check-success"> &nbsp;&nbsp;
-                                <input type="checkbox" id="checkbox1" name="term" ng-value="term" value="1" required data-toggle="tooltip" title="test">
+                            <div class="checkbox checkbox check-success" data-toggle="tooltip" title="Please accept our terms and agreement" data-placement="bottom" data-original-title="Please accept our terms and agreement"> &nbsp;&nbsp;
+                                <input type="checkbox" id="checkbox1" name="term" ng-model="term" value="1" required>
                                 <label for="checkbox1" style="margin-left: -10px;">I accept the terms of the <a href="#">Buyer Agreement</a></label>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-10">
-                            <button class="btn btn-primary btn-block btn-cons pull-right" type="submit" style="margin-right: 0px;" ng-disabled="signup_form.$invalid">Sign up</button>
+                        <div class="col-md-10" data-toggle="tooltip" title="Please accept our terms and agreement" data-placement="bottom" data-original-title="Please accept our terms and agreement">
+                            <button class="btn btn-primary btn-block btn-cons pull-right" type="submit" style="margin-right: 0px;" ng-disabled="signup_form.$invalid" >Sign up</button>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12" style="margin-left: 40px;">
-                            <span><a href="">Already have an account? Login</a> · <a href="">Want to be a maker?</a></span>
+                            <span><a href="{{URL::to('login')}}">Already have an account? Login</a> · <a href="">Want to be a maker?</a></span>
                         </div>
                     </div>
                 </form>

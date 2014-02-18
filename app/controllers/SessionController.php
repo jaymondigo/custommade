@@ -3,13 +3,13 @@
 class SessionController extends BaseController {
 
 	public function getLogin()
-	{
+	{	 
 		return View::make('public.login');
 	}
 	public function postLogin()
 	{
 		$user = array(
-			'email' => Input::get('email'),
+			'email' => Input::get('username'),
 			'password' => Input::get('password')
 		);
 
@@ -20,8 +20,16 @@ class SessionController extends BaseController {
 		}
 		else
 		{
-			return View::make('public.login')->with('error', true);
-		}
+			$user = array(
+			'username' => Input::get('username'),
+			'password' => Input::get('password')
+			);
+
+			if(Auth::attempt( $user, $remember ))
+				return Redirect::intended('/app');
+			else
+				return View::make('public.login')->with('error', true);
+		} 
 	}
 
 	public function getLogout()
@@ -31,18 +39,21 @@ class SessionController extends BaseController {
 	}
 
 	public function getSignup(){
-		return View::make('public.register')->with('err');
+		return View::make('public.register')->with('errors');
 	}
 
 	public function postSignup(){
 		
 
 		$user = new  User();
-		$user->firstname = Input::get('first_name');
-		$user->lastname = Input::get('last_name');
+		$user->first_name = Input::get('first_name');
+		$user->last_name = Input::get('last_name');
 		$user->email = Input::get('email');
 		$user->password = Input::get('password');
-		$user->type = Input::get('account_type');
+		$user->is_buyer = true;
+
+		$matches = explode("@", $user->email);
+		$user->username = $matches[0];
 
 		if($user->save())
 		{
@@ -57,7 +68,7 @@ class SessionController extends BaseController {
 		}
 		else
 		{
-			return View::make('public.register')->with('err', $user->validationErrors)->with('accountTypes',AccountType::all());;
+			return View::make('public.register')->with('errors', $user->validationErrors);;
 		}
 		
 	}
@@ -115,12 +126,19 @@ class SessionController extends BaseController {
 	        // Send a request with it
 	        $result = json_decode( $fb->request( '/me' ), true );
 
-	        $message = 'Your unique facebook user id is: ' . $result['id'] . ' and your name is ' . $result['name'];
-	        echo $message. "<br/>";
+	        // $message = 'Your unique facebook user id is: ' . $result['id'] . ' and your name is ' . $result['name'];
+	        // echo $message. "<br/>";
+	        $id = $result['id'];
+	        $first_name = $result['first_name'];
+	        $last_name = $result['last_name'];
+	        $site = 'fb';
+	        $data = $result;
+	        $email = $result['email'];
 
-	        //Var_dump
+		    self::socialMediaLogin($email, $first_name, $last_name, $id, $site, $data);
+		    //Var_dump
 	        //display whole array().
-	        dd($result);
+	       // dd($result);
 
 	    }
 	    // if not ask for permission first
@@ -170,6 +188,56 @@ class SessionController extends BaseController {
 	       	return Redirect::to(htmlspecialchars_decode($url));
 	        // return Response::make()->header( 'Location: ', (string)$url );
 	    }
+	}
+
+	public static function socialMediaLogin($email, $first_name, $last_name, $id, $site, $data){
+		
+		if($site=='fb'){
+			$user = User::where('fb_id','=',$id)->limit(1)->get();
+
+		}else if($site=='google'){
+			$user = User::where('google_id','=',$id)->limit(1)->get();
+		}
+
+
+
+		if(isset($user[0]))
+			$user = $user[0]; 
+		else{			
+			$user = User::where('email','=', $email)->limit(1)->get();
+
+			if(!isset($user[0])){
+				$user = new User();
+			}else
+				$user = $user[0];
+		}
+
+		if($site=='fb')
+			$user->fb_id = $id;
+		else if($site=='google')
+			$user->google_id = $id;
+
+		$user->first_name = $first_name;
+		$user->last_name = $last_name;
+		$user->email = $email;
+		$user->password = time();
+		$user->is_buyer = true;
+
+		$matches = explode("@", $user->email);
+		$user->username = $matches[0];
+
+		if($user->save())
+		{
+			echo "new user";
+	        
+			Auth::login($user);
+			echo Redirect::to('/');
+		}else{ 
+
+			$user->updateUniques();
+			Auth::login($user);
+			echo Redirect::to('/');
+		}
 	}
 
 	public function postIsUnique(){

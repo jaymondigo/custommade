@@ -31,10 +31,9 @@ class User extends Ardent implements UserInterface, RemindableInterface {
 
     public static $rules = array(
         'email'                 => 'required|email|unique:users',
-        'firstname'             => 'required|between:4,16',
-        'lastname'              => 'required|between:4,16',
-        'password'              => 'required',
-        'type'          => 'required'
+        'first_name'             => 'required|between:4,16',
+        'last_name'              => 'required|between:4,16',
+        'password'              => 'required', 
     );
 
     public function beforeSave()
@@ -79,7 +78,7 @@ class User extends Ardent implements UserInterface, RemindableInterface {
         // // send welcome email
         // MailHelper::signupMessage($this->firstname.' '.$this->lastname, $this->email, $this->rawPassword);
         //set message on first login
-        Session::flash('notice', 'Hello '.$this->firstname.'! You have successfully registered your account. Please confirm your email now.');
+        //Session::flash('notice', 'Hello '.$this->firstname.'! You have successfully registered your account. Please confirm your email now.');
     }
 
 }
