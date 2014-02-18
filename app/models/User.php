@@ -37,19 +37,6 @@ class User extends Ardent implements UserInterface, RemindableInterface {
         'type'          => 'required'
     );
 
-    public function accountType()
-    {
-        return $this->belongsTo('AccountType','type');
-    }
-    
-    public function medias(){
-    	return $this->hasMany('Media', 'owner');
-    }
-
-    public function profilePicture(){
-    	return $this->medias()->where('type','profile_picture');
-    }
-
     public function beforeSave()
     {
         $this->rawPassword = $this->password;
@@ -89,8 +76,8 @@ class User extends Ardent implements UserInterface, RemindableInterface {
 
     public function afterCreate()
     {
-        // send welcome email
-        MailHelper::signupMessage($this->firstname.' '.$this->lastname, $this->email, $this->rawPassword);
+        // // send welcome email
+        // MailHelper::signupMessage($this->firstname.' '.$this->lastname, $this->email, $this->rawPassword);
         //set message on first login
         Session::flash('notice', 'Hello '.$this->firstname.'! You have successfully registered your account. Please confirm your email now.');
     }

@@ -11,18 +11,18 @@
 |
 */
 
-Route::get('/', array('as'=>'home', 'uses'=>'HomeController@getIndex'));
+Route::get('/', array('as'=>'public', 'uses'=>'PublicController@getIndex'));
 Route::get('login', array('as'=>'login_route', 'uses'=>'SessionController@getlogin'));
+
 Route::get('member', array('as'=>'member', 'uses'=>'DashboardController@getMember'));
 
-Route::controller('session', 'SessionController');
-Route::controller('register', 'RegisterController');
-Route::controller('home', 'HomeController');    
+Route::controller('session', 'SessionController'); 
+Route::get('signup', array('as'=>'signupRoute', 'uses'=>'SessionController@getSignup'));
+Route::controller('p', 'PublicController');    
 /* start apps routes =============================================== */
 
-Route::group(array('before' => 'auth'), function(){   
-		Route::controller('app', 'DashboardController');    
-		Route::controller('user', 'UserController');
+Route::group(array('before' => 'auth'), function(){    
+		// Route::controller('user', 'UserController');
 
 });
 

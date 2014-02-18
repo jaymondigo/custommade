@@ -30,6 +30,66 @@ class SessionController extends BaseController {
 		return Redirect::to('/');
 	}
 
+	public function getSignup(){
+		return View::make('public.register')->with('err');
+	}
+
+	public function postSignup(){
+		
+
+		$user = new  User();
+		$user->firstname = Input::get('first_name');
+		$user->lastname = Input::get('last_name');
+		$user->email = Input::get('email');
+		$user->password = Input::get('password');
+		$user->type = Input::get('account_type');
+
+		if($user->save())
+		{
+			// if(Input::get('newsletter-subscribe'))
+			// {
+			// 	// $subs = new Subscriber;
+			// 	// $subs->user_id = $user->id;
+			// 	// $subs->save();
+			// }
+			Auth::login($user);
+			return Redirect::to('/');
+		}
+		else
+		{
+			return View::make('public.register')->with('err', $user->validationErrors)->with('accountTypes',AccountType::all());;
+		}
+		
+	}
+
+	public function getForgotPassword() {
+		return View::make('public.forgot_password');
+	}
+
+	public function postForgotPassword() {
+		
+		$email = Input::get('email');
+		$user = User::where('email', $email)->first();
+
+		if(is_object($user) && count($user) > 0) {
+			
+			$password = BRMHelper::genRandomPassword();
+			$user->password = $password;
+			$user->updateUniques();
+			//send new password to user
+			MailHelper::forgotPasswordMessage($user->email, $password);
+
+			Session::flash('notice', 'Success! New password coming your way. Please check your email.');
+			return View::make('public.forgot_password');
+
+		}
+		else{
+			Session::flash('alert', 'Sorry, <strong>'.$email.'</strong> has no associated account yet.');
+			return View::make('public.forgot_password');
+		}
+
+	}
+
 	/**
 	 * Login user with facebook
 	 *
@@ -110,5 +170,16 @@ class SessionController extends BaseController {
 	       	return Redirect::to(htmlspecialchars_decode($url));
 	        // return Response::make()->header( 'Location: ', (string)$url );
 	    }
+	}
+
+	public function postIsUnique(){
+		$field = Input::get('field');
+		$val = Input::get('value');
+
+		$user = User::where($field,'=',$val)->limit(1)->get();
+		if(!isset($user[0]))
+			return array('isUnique'=> true);
+		else
+			return array('isUnique'=> false);
 	}
 }

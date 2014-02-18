@@ -10,6 +10,20 @@
 //
 // The available directives right now are require, require_directory, and require_tree
 //
-//= require ./lib/jquery
-//= require ./lib/bootstrap
-//= require_tree ./public
+//= require ./components/plugins-js/jquery-1.8.3 
+//= require ./components/plugins-js/angular/angular
+//= require ./components/plugins-js/angular/angular-animate
+//= require ./components/plugins-js/angular/angular-ui-router
+//= require ./components/plugins-js/angular/angular-resource
+//= require ./components/plugins-js/angular/angular-sanitize
+//= require ./public/config
+//= require ./public/directives 
+//= require ./public/services
+//= require ./public/controllers
+
+//= require ./components/plugins-js/bootstrap/js/bootstrap
+//= require ./components/plugins-js/pace/pace
+//= require ./components/plugins-js/jquery-validation/js/jquery.validate
+//= require ./components/theme-js/login
+ 
+
