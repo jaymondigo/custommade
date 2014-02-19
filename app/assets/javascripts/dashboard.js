@@ -16,14 +16,14 @@
 //= require ./components/plugins-js/angular/angular-ui-router
 //= require ./components/plugins-js/angular/angular-resource
 //= require ./components/plugins-js/angular/angular-sanitize
-//= require ./public/app
-//= require ./public/directives 
-//= require ./public/services
-//= require ./public/controllers
+//
+//= require ./dashboard/app 
+//= require_tree ./dashboard/directives 
+//= require_tree ./dashboard/services
+//= require_tree ./dashboard/controllers
 
 //= require ./components/plugins-js/bootstrap/js/bootstrap
 //= require ./components/plugins-js/pace/pace
 //= require ./components/plugins-js/jquery-validation/js/jquery.validate
-//= require ./components/theme-js/login
  
 

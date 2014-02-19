@@ -1,4 +1,4 @@
-pubApp = angular.module('pubApp', ['ui.router','ngResource','ngSanitize']);
+window.pubApp = angular.module('pub_app', ['ui.router','ngResource','ngSanitize']);
 
 // pubApp.config(['$stateProvider', '$urlRouterProvider',function ($stateProvider, $urlRouterProvider) {
 // 	$urlRouterProvider.otherwise("/");

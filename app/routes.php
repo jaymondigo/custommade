@@ -15,6 +15,7 @@ Route::get('/', array('as'=>'public', 'uses'=>'PublicController@getIndex'));
 Route::get('login', array('as'=>'login_route', 'uses'=>'SessionController@getlogin'));
 
 Route::get('member', array('as'=>'member', 'uses'=>'DashboardController@getMember'));
+Route::get('member/{any}', array('as'=>'member', 'uses'=>'DashboardController@getMember'));
 
 Route::controller('session', 'SessionController'); 
 Route::get('signup', array('as'=>'signupRoute', 'uses'=>'SessionController@getSignup'));
