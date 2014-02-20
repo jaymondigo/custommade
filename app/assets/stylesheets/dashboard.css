@@ -10,6 +10,14 @@
  * but before any files alphabetically greater than 'application.css' 
  *
  *= require ./components/plugins-style/pace/pace-theme-flash
+ *= require ./components/plugins-style/gritter/css/jquery.gritter
+ *= require ./components/plugins-style/bootstrap-datepicker/css/datepicker
+ *= require ./components/plugins-style/jquery-ricksaw-chart/css/rickshaw
+ *= require ./components/plugins-style/jquery-morris-chart/css/morris
+ *= require ./components/plugins-style/jquery-slider/css/jquery.sidr.light
+ *= require ./components/plugins-style/jquery-jvectormap/css/jquery-jvectormap-1.2.2
+ *= require ./components/plugins-style/boostrap-checkbox/css/bootstrap-checkbox
+ *= require ./components/plugins-style/bootstrap-select2/select2
  *= require ./components/plugins-style/boostrapv3/css/bootstrap
  *= require ./components/plugins-style/boostrapv3/css/bootstrap-theme
  *= require ./components/plugins-style/font-awesome/css/font-awesome
@@ -21,3 +29,4 @@
  *= require_tree ./dashboard
  */
 
+ 

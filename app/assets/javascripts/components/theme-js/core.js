@@ -1,6 +1,6 @@
 $(document).ready(function() {		
 	calculateHeight();
-	$(".remove-widget").click(function() {		
+	$(document).on('click', '.remove-widget', function() {		
 		$(this).parent().parent().parent().addClass('animated fadeOut');
 		$(this).parent().parent().parent().attr('id', 'id_a');
 
@@ -11,12 +11,12 @@ $(document).ready(function() {
 	return false;
 	});
 	
-	$(".create-folder").click(function() {
+	$(document).on('click', '.create-folder', function() {
 		$('.folder-input').show();
 		return false;
 	});
 	
-	$(".folder-name").keypress(function (e) {
+	$(document).on('keypress', ".folder-name", function (e) {
         if(e.which == 13) {
 			 $('.folder-input').hide();
 			 $( '<li><a href="#"><div class="status-icon green"></div>'+  $(this).val() +'</a> </li>' ).insertBefore( ".folder-input" );
@@ -24,7 +24,7 @@ $(document).ready(function() {
 		}
     });
 	
-	$("#menu-collapse").click(function() {	
+	$(document).on('click',"#menu-collapse",function() {	
 		if($('.page-sidebar').hasClass('mini')){
 			$('.page-sidebar').removeClass('mini');
 			$('.page-content').removeClass('condensed-layout');
@@ -54,11 +54,11 @@ $(document).ready(function() {
 		$(this).parent().children('.input-group-addon').addClass('input-focus');		
 	})	
 	
-	$(".bootstrap-tagsinput input").blur(function(){
+	$(document).on('blur', ".bootstrap-tagsinput input", function(){
 		$(this).parent().removeClass('input-focus');
 	})
 	
-	$(".bootstrap-tagsinput input").focus(function(){
+	$(document).on('focus',".bootstrap-tagsinput input",function(){
 		$(this).parent().addClass('input-focus');		
 	})	
 	
@@ -67,7 +67,7 @@ $(document).ready(function() {
         content: function() {
           return $('#notification-list').html();
         }
-    });
+	});
 //***********************************CHAT POPUP*****************************
 	 $('.chat-menu-toggle').sidr({
 		name:'sidr',
@@ -75,7 +75,7 @@ $(document).ready(function() {
 		complete:function(){		 
 		}
 	});
-	$(".simple-chat-popup").click(function(){
+	$(document).on('click', ".simple-chat-popup", function(){
 		$(this).addClass('hide');
 		$('#chat-message-count').addClass('hide');	
 	});
@@ -304,15 +304,15 @@ $(document).ready(function() {
                 disableFadeOut: true
         });
     });
-	$('.dropdown-toggle').click(function () {
+	$(document).on('click','.dropdown-toggle',function () {
 		$("img").trigger("unveil");
 	});
-   
+
 	if ($.fn.sparkline) {
 		$('.sparklines').sparkline('html', { enableTagOptions: true });
 	}
 
-	 $('table th .checkall').on('click', function () {
+	$(document).on('click', 'table th .checkall', function () {
 			if($(this).is(':checked')){
 				$(this).closest('table').find(':checkbox').attr('checked', true);
 				$(this).closest('table').find('tr').addClass('row_selected');
@@ -322,7 +322,7 @@ $(document).ready(function() {
 				$(this).closest('table').find(':checkbox').attr('checked', false);
 				$(this).closest('table').find('tr').removeClass('row_selected');
 			}
-    });
+    }); 
 
 	$('.animate-number').each(function(){
 		 $(this).animateNumbers($(this).attr("data-value"), true, parseInt($(this).attr("data-animation-duration")));	
@@ -332,21 +332,21 @@ $(document).ready(function() {
 		
 	})
 	
-	
-	$('.controller .reload').click(function () { 
+	 
+	$(document).on('click', '.controller .reload', function () { 
 		var el =$(this).parent().parent().parent();
 		blockUI(el);
 		  window.setTimeout(function () {
                unblockUI(el);
             }, 1000);
-	});
-	$('.controller .remove').click(function () {
+	}); 
+	$(document).on('click','.controller .remove', function () {
 		$(this).parent().parent().parent().parent().addClass('animated fadeOut');
 		$(this).parent().parent().parent().parent().attr('id', 'id_remove_temp_id');
 		 setTimeout( function(){			
 			$('#id_remove_temp_id').remove();	
 		 },400);
-	});
+	})
         if (!jQuery().sortable) {
             return;
         }
@@ -397,7 +397,7 @@ $(document).ready(function() {
         }
     });
 	
-	$('.scrollup').click(function(){
+	$(document).on('click', '.scrollup',function(){
 		$("html, body").animate({ scrollTop: 0 }, 700);
 		return false;
     });
