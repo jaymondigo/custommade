@@ -1,122 +1,122 @@
 $(document).ready(function() {	
 	var graph;
 	var rick;
-	loadServerChart();
-	loadSampleChart();
-	loadAnimatedWeatherIcons();
+	// loadServerChart();
+	// // loadSampleChart();
+	// loadAnimatedWeatherIcons();
 	
-//Ricksaw Chart for Server Load - Autoupdate
-function loadServerChart(){
-	var seriesData = [ [], []];
-	var random = new Rickshaw.Fixtures.RandomData(50);
+// //Ricksaw Chart for Server Load - Autoupdate
+// function loadServerChart(){
+// 	var seriesData = [ [], []];
+// 	var random = new Rickshaw.Fixtures.RandomData(50);
 
-	for (var i = 0; i < 50; i++) {
-		random.addData(seriesData);
-	}
+// 	for (var i = 0; i < 50; i++) {
+// 		random.addData(seriesData);
+// 	}
 
-	graph = new Rickshaw.Graph( {
-		element: document.querySelector("#chart"),
-		height: 200,
-		renderer: 'area',
-		series: [
-			{
-				data: seriesData[0],
-				color: 'rgba(0,144,217,0.51)',
-				name:'DB Server'
-			},{
-				data: seriesData[1],
-				color: '#eceff1',
-				name:'Web Server'
-			}
-		]
-	} );
-	var hoverDetail = new Rickshaw.Graph.HoverDetail( {
-		graph: graph
-	});
+// 	graph = new Rickshaw.Graph( {
+// 		element: document.querySelector("#chart"),
+// 		height: 200,
+// 		renderer: 'area',
+// 		series: [
+// 			{
+// 				data: seriesData[0],
+// 				color: 'rgba(0,144,217,0.51)',
+// 				name:'DB Server'
+// 			},{
+// 				data: seriesData[1],
+// 				color: '#eceff1',
+// 				name:'Web Server'
+// 			}
+// 		]
+// 	} );
+// 	var hoverDetail = new Rickshaw.Graph.HoverDetail( {
+// 		graph: graph
+// 	});
 
-	setInterval( function() {
-		random.removeData(seriesData);
-		random.addData(seriesData);
-		graph.update();
+// 	setInterval( function() {
+// 		random.removeData(seriesData);
+// 		random.addData(seriesData);
+// 		graph.update();
 
-	},1000);
-}
+// 	},1000);
+// }
 
-//Ricksaw Chart Sample 
-function loadSampleChart(){
-var seriesData = [ [], [],[]];
-	var random = new Rickshaw.Fixtures.RandomData(50);
+// //Ricksaw Chart Sample 
+// function loadSampleChart(){
+// var seriesData = [ [], [],[]];
+// 	var random = new Rickshaw.Fixtures.RandomData(50);
 
-	for (var i = 0; i < 50; i++) {
-		random.addData(seriesData);
-	}
+// 	for (var i = 0; i < 50; i++) {
+// 		random.addData(seriesData);
+// 	}
 
-	rick = new Rickshaw.Graph( {
-		element: document.querySelector("#ricksaw"),
-		height: 200,
-		renderer: 'area',
-		series: [
-			{
-				data: seriesData[0],
-				color: '#736086',
-				name:'Downloads'
-			},{
-				data: seriesData[1],
-				color: '#f8a4a3',
-				name:'Uploads'
-			},
-			{
-				data: seriesData[2],
-				color: '#eceff1',
-				name:'All'
-			}
-		]
-	} );
-	var hoverDetail = new Rickshaw.Graph.HoverDetail( {
-		graph: rick
-	});
+// 	rick = new Rickshaw.Graph( {
+// 		element: document.querySelector("#ricksaw"),
+// 		height: 200,
+// 		renderer: 'area',
+// 		series: [
+// 			{
+// 				data: seriesData[0],
+// 				color: '#736086',
+// 				name:'Downloads'
+// 			},{
+// 				data: seriesData[1],
+// 				color: '#f8a4a3',
+// 				name:'Uploads'
+// 			},
+// 			{
+// 				data: seriesData[2],
+// 				color: '#eceff1',
+// 				name:'All'
+// 			}
+// 		]
+// 	} );
+// 	var hoverDetail = new Rickshaw.Graph.HoverDetail( {
+// 		graph: rick
+// 	});
 	
-	random.addData(seriesData);
-	rick.update();
+// 	random.addData(seriesData);
+// 	rick.update();
 	
-	var ticksTreatment = 'glow';
+// 	var ticksTreatment = 'glow';
 	
-	var xAxis = new Rickshaw.Graph.Axis.Time( {
-	graph: rick,
-	ticksTreatment: ticksTreatment,
-	timeFixture: new Rickshaw.Fixtures.Time.Local()
-	});
+// 	var xAxis = new Rickshaw.Graph.Axis.Time( {
+// 	graph: rick,
+// 	ticksTreatment: ticksTreatment,
+// 	timeFixture: new Rickshaw.Fixtures.Time.Local()
+// 	});
 
-	xAxis.render();
+// 	xAxis.render();
 
-	var yAxis = new Rickshaw.Graph.Axis.Y( {
-		graph: rick,
-		tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
-		ticksTreatment: ticksTreatment
-	});
+// 	var yAxis = new Rickshaw.Graph.Axis.Y( {
+// 		graph: rick,
+// 		tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
+// 		ticksTreatment: ticksTreatment
+// 	});
 	
-	var legend = new Rickshaw.Graph.Legend( {
-	graph: rick,
-	element: document.getElementById('legend')
-	});	
+// 	var legend = new Rickshaw.Graph.Legend( {
+// 	graph: rick,
+// 	element: document.getElementById('legend')
+// 	});	
 	
-	yAxis.render();
+// 	yAxis.render();
 	
-	var shelving = new Rickshaw.Graph.Behavior.Series.Toggle( {
-		graph: rick,
-		legend: legend
-	} );
+// 	var shelving = new Rickshaw.Graph.Behavior.Series.Toggle( {
+// 		graph: rick,
+// 		legend: legend
+// 	} );
 
-	var order = new Rickshaw.Graph.Behavior.Series.Order( {
-		graph: rick,
-		legend: legend
-	} );
+// 	var order = new Rickshaw.Graph.Behavior.Series.Order( {
+// 		graph: rick,
+// 		legend: legend
+// 	} );
 
-	var highlighter = new Rickshaw.Graph.Behavior.Series.Highlight( {
-		graph: rick,
-		legend: legend
-	} );	
-}
+// 	var highlighter = new Rickshaw.Graph.Behavior.Series.Highlight( {
+// 		graph: rick,
+// 		legend: legend
+// 	} );	
+// }
 
 //Jquery vector map
 var cityAreaData = [

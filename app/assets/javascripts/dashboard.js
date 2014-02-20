@@ -32,10 +32,7 @@
 //= require ./components/plugins-js/jquery-numberAnimate/jquery.animateNumbers 
 //= require ./components/plugins-js/bootstrap-datepicker/js/bootstrap-datepicker
 //= require ./components/plugins-js/jquery-block-ui/jqueryblockui
-//= require ./components/plugins-js/bootstrap-select2/select2
-//= require ./components/plugins-js/jquery-ricksaw-chart/js/raphael-min
-//= require ./components/plugins-js/jquery-ricksaw-chart/js/d3.v2
-//= require ./components/plugins-js/jquery-ricksaw-chart/js/rickshaw
+//= require ./components/plugins-js/bootstrap-select2/select2 
 //= require ./components/plugins-js/jquery-morris-chart/js/morris
 //= require ./components/plugins-js/jquery-easy-pie-chart/js/jquery.easypiechart
 //= require ./components/plugins-js/jquery-slider/jquery.sidr

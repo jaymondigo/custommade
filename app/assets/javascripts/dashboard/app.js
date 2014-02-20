@@ -1,28 +1,50 @@
 window.DashApp = angular.module('dash_app', ['ui.router','ngResource','ngSanitize']);
 
 currentUser = JSON.parse($('div[user]').attr('user'));
+path = 'dashboard/partials/';
+baseUrl = '/member/';
 
 DashApp.config(['$stateProvider', '$urlRouterProvider','$locationProvider',
 	function ($stateProvider, $urlRouterProvider,$locationProvider) {
 		
-		if(currentUser.is_buyer)
-			$urlRouterProvider.otherwise('/buyer');
-		else if(currentUser.is_maker) 
-			$urlRouterProvider.otherwise('/maker');		
+		$locationProvider.html5Mode(true);
 
-		path = 'dashboard/partials/';
-		$stateProvider
-			.state('buyer',
-				{
-					url:'/buyer',
-					controller: 'buyerCtrl',
-					template: JST[path+'buyer/index']
-				})
-			.state('maker',
-				{
-					url: '/maker',
-					controller: 'makerCtrl',
-					template: JST[path+'maker/index']
-				});
-		$locationProvider.html5Mode = true;
-}]);
+		if(currentUser.is_buyer==1&& currentUser.is_maker==1){
+			$urlRouterProvider.otherwise(baseUrl+'buyer');
+
+			$stateProvider
+				.state('buyer',
+					{
+						url:baseUrl+'buyer',
+						controller: 'buyerCtrl',
+						template: JST[path+'buyer/base']
+					})
+				.state('maker',
+					{
+						url: baseUrl+'maker',
+						controller: 'makerCtrl',
+						template: JST[path+'maker/base']
+					});
+		}
+		else if(currentUser.is_buyer==1){
+			$urlRouterProvider.otherwise(baseUrl+'buyer');
+
+			$stateProvider
+				.state('buyer',
+					{
+						url:baseUrl+'buyer',
+						controller: 'buyerCtrl',
+						template: JST[path+'buyer/base']
+					});
+		}
+		else if(currentUser.is_maker==1){
+			$urlRouterProvider.otherwise(baseUrl+'maker');		
+			$stateProvider
+				.state('maker',
+					{
+						url: baseUrl+'maker',
+						controller: 'makerCtrl',
+						template: JST[path+'maker/base']
+					});
+		}
+ }]);

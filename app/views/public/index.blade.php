@@ -11,30 +11,30 @@
 <meta content="" name="description" />
 <meta content="" name="author" />
 
-<link rel="stylesheet" type="text/css" href="assets/plugins/owl-carousel/owl.carousel.css" />
-<link rel="stylesheet" type="text/css" href="assets/plugins/owl-carousel/owl.theme.css" />
-<link rel="stylesheet" type="text/css" href="assets/plugins/headereffects/css/component.css">
-<link rel="stylesheet" type="text/css" href="assets/plugins/headereffects/css/normalize.css" />
-<link href="assets/plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="assets/public/plugins/owl-carousel/owl.carousel.css" />
+<link rel="stylesheet" type="text/css" href="assets/public/plugins/owl-carousel/owl.theme.css" />
+<link rel="stylesheet" type="text/css" href="assets/public/plugins/headereffects/css/component.css">
+<link rel="stylesheet" type="text/css" href="assets/public/plugins/headereffects/css/normalize.css" />
+<link href="assets/public/plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" media="screen"/>
 
 <!-- BEGIN CORE CSS FRAMEWORK -->
-<link href="assets/plugins/boostrapv3/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-<link href="assets/plugins/boostrapv3/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
-<link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+<link href="assets/public/plugins/boostrapv3/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="assets/public/plugins/boostrapv3/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+<link href="assets/public/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
 <!-- END CORE CSS FRAMEWORK -->
 
 <!-- BEGIN CSS TEMPLATE -->
-<link href="assets/css/public/style.css" rel="stylesheet" type="text/css"/>
-<link href="assets/css/public/magic_space.css" rel="stylesheet" type="text/css"/>
-<link href="assets/css/public/responsive.css" rel="stylesheet" type="text/css"/>
-<link href="assets/css/public/animate.min.css" rel="stylesheet" type="text/css"/>
+<link href="assets/public/css/style.css" rel="stylesheet" type="text/css"/>
+<link href="assets/public/css/magic_space.css" rel="stylesheet" type="text/css"/>
+<link href="assets/public/css/responsive.css" rel="stylesheet" type="text/css"/>
+<link href="assets/public/css/animate.min.css" rel="stylesheet" type="text/css"/>
 <!-- END CSS TEMPLATE -->
 
-<script type="text/javascript" src="assets/plugins/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="assets/public/plugins/jquery-1.8.3.min.js"></script>
 <!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
-<script type="text/javascript" src="assets/plugins/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
-<script type="text/javascript" src="assets/plugins/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-<link rel="stylesheet" type="text/css" href="assets/plugins/rs-plugin/css/settings.css" media="screen" />
+<script type="text/javascript" src="assets/public/plugins/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+<script type="text/javascript" src="assets/public/plugins/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<link rel="stylesheet" type="text/css" href="assets/public/plugins/rs-plugin/css/settings.css" media="screen" />
 
 </head>
 <!-- END HEAD -->
@@ -52,14 +52,14 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						  </button>
-						  <a href="#" class="navbar-brand compressed"><img src="assets/img/logo_condensed.png" alt="" data-src="assets/img/logo_condensed.png" data-src-retina="assets/img/logo2x.png" width="119" height="22"/></a>
+						  <a href="#" class="navbar-brand compressed"><img src="assets/public/img/logo_condensed.png" alt="" data-src="assets/public/img/logo_condensed.png" data-src-retina="assets/public/img/logo2x.png" width="119" height="22"/></a>
 						</div>
 						<div class="navbar-collapse collapse">
 						  <ul class="nav navbar-nav navbar-right" >
 							<li ><a href="index.html">Home</a></li>
 							<li><a href="pricing.html">Blog</a></li>
-							<li ><a href="signup.html">Sign up</a></li>
-							<li ><a href="login.html">Login</a></li>
+							<li ><a href="signup">Sign up</a></li>
+							<li ><a href="login">Login</a></li>
 						  </ul>
 						</div><!--/.nav-collapse -->
 					  </div>
@@ -79,14 +79,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a href="#" class="navbar-brand"><img src="assets/img/logo.png" data-src="assets/img/logo.png" data-src-retina="assets/img/logo_2x.png" width="119" height="22" alt=""/></a>		 
+          <a href="#" class="navbar-brand"><img src="assets/public/img/logo.png" data-src="assets/public/img/logo.png" data-src-retina="assets/public/img/logo_2x.png" width="119" height="22" alt=""/></a>		 
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right" >
 			<li ><a href="index.html">Home</a></li>
 			<li><a href="pricing.html">Blog</a></li>
-			<li ><a href="signup.html">Sign up</a></li>
-			<li ><a href="login.html">Login</a></li>
+			<li ><a href="signup">Sign up</a></li>
+			<li ><a href="login">Login</a></li>
 			<li ><a href="#" class="btn btn-purple btn-lg  btn-large m-r-10" style="height: 43px;padding-left: 16px;padding-right: 16px;">Start your project</a></li>
           </ul>
         </div><!--/.nav-collapse -->
@@ -100,7 +100,7 @@
 				<!-- SLIDE  -->
 				<li data-transition="fade" data-slotamount="5" data-masterspeed="700" >
 					<!-- MAIN IMAGE -->
-					<img src="assets/img/bg/slide_one.jpg"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
+					<img src="assets/public/img/bg/slide_one.jpg"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
 
 
 					<!-- LAYERS -->
@@ -227,7 +227,7 @@
 
 				<div class="col-md-12" style="text-align:center;"> 
 
-						<img src="assets/img/browser.png" alt="" class="resize p-t-60 col-md-9 hidden-xs" style="margin:0 auto;left: 126px;" data-ride="animated" data-animation="fadeInUp" data-delay="300">
+						<img src="assets/public/img/browser.png" alt="" class="resize p-t-60 col-md-9 hidden-xs" style="margin:0 auto;left: 126px;" data-ride="animated" data-animation="fadeInUp" data-delay="300">
 				</div>
 		
 			</div>
@@ -415,7 +415,7 @@ Register your interest below</h2>
 			<div class="p-t-30 p-b-50">
 				<div class="row">
 					<div class="col-md-2 col-lg-2 col-sm-2 col-xs-12 xs-m-b-20">
-					<img src="assets/img/logo_condensed.png" alt="" data-src="assets/img/logo_condensed.png" data-src-retina="assets/img/logo2x.png" width="119" height="22"/>
+					<img src="assets/public/img/logo_condensed.png" alt="" data-src="assets/public/img/logo_condensed.png" data-src-retina="assets/public/img/logo2x.png" width="119" height="22"/>
 					</div>
 					<div class="col-md-4 col-lg-3 col-sm-4  col-xs-12 xs-m-b-20">
 						<address class="xs-no-padding  col-md-6 col-lg-6 col-sm-6  col-xs-12">	
@@ -450,15 +450,15 @@ Register your interest below</h2>
 </div>
 		
 
-<script src="assets/plugins/boostrapv3/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="assets/plugins/pace/pace.min.js" type="text/javascript"></script>
-<script src="assets/plugins/jquery-unveil/jquery.unveil.min.js" type="text/javascript"></script> 
-<script src="assets/plugins/owl-carousel/owl.carousel.min.js" type="text/javascript"></script>
-<script src="assets/plugins/waypoints.min.js"></script>
-<script type="text/javascript" src="assets/plugins/parrallax/js/jquery.parallax-1.1.3.js"></script>
-<script type="text/javascript" src="assets/plugins/jquery-nicescroll/jquery.nicescroll.min.js"></script>
-<script type="text/javascript" src="assets/plugins/jquery-appear/jquery.appear.js"></script>
-<script src="assets/plugins/jquery-numberAnimate/jquery.animateNumbers.js" type="text/javascript"></script> 
-<script type="text/javascript" src="assets/js/core.js"></script>
+<script src="assets/public/plugins/boostrapv3/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="assets/public/plugins/pace/pace.min.js" type="text/javascript"></script>
+<script src="assets/public/plugins/jquery-unveil/jquery.unveil.min.js" type="text/javascript"></script> 
+<script src="assets/public/plugins/owl-carousel/owl.carousel.min.js" type="text/javascript"></script>
+<script src="assets/public/plugins/waypoints.min.js"></script>
+<script type="text/javascript" src="assets/public/plugins/parrallax/js/jquery.parallax-1.1.3.js"></script>
+<script type="text/javascript" src="assets/public/plugins/jquery-nicescroll/jquery.nicescroll.min.js"></script>
+<script type="text/javascript" src="assets/public/plugins/jquery-appear/jquery.appear.js"></script>
+<script src="assets/public/plugins/jquery-numberAnimate/jquery.animateNumbers.js" type="text/javascript"></script> 
+<script type="text/javascript" src="assets/public/js/core.js"></script>
 
 </body>

@@ -18,10 +18,10 @@
             <br>
             <button class="btn btn-block btn-info col-md-8" type="button">
             <span class="pull-left"><i class="icon-facebook"></i></span>
-            <span class="bold">Login with Facebook</span> </button>
+            <span class="bold" onclick="document.location.href='{{URL::to('fb-login')}}'">Login with Facebook</span> </button>
             <button class="btn btn-block btn-success col-md-8" type="button">
             <span class="pull-left"><i class="icon-twitter"></i></span>
-            <span class="bold">Login with Twitter</span>
+            <span class="bold" onclick="document.location.href='{{URL::to('fb-login')}}'">Login with Twitter</span>
             </button>
         </div>
         <div class="col-md-5 "> <br>

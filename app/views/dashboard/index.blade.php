@@ -1,6 +1,6 @@
 @extends('base')
 @section('head')
-<title>Dream Builder Solutions | Login</title>
+<title>Dream Builder Solutions | Login</title> 
 {{stylesheet_link_tag('public')}}
 @stop
 
