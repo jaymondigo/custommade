@@ -1,10 +1,10 @@
-window.DashApp = angular.module('dash_app', ['ui.router','ngResource','ngSanitize']);
-
 currentUser = JSON.parse($('div[user]').attr('user'));
 path = 'dashboard/partials/';
 baseUrl = '/member/';
 
-DashApp.config(['$stateProvider', '$urlRouterProvider','$locationProvider',
+window.DashApp = angular.module('dash_app', ['ui.router','ngResource','ngSanitize'])
+
+.config(['$stateProvider', '$urlRouterProvider','$locationProvider',
 	function ($stateProvider, $urlRouterProvider,$locationProvider) {
 		
 		$locationProvider.html5Mode(true);
@@ -47,4 +47,23 @@ DashApp.config(['$stateProvider', '$urlRouterProvider','$locationProvider',
 						template: JST[path+'maker/base']
 					});
 		}
+
+		$urlRouterProvider
+			.state('list_project', {
+				url: baseUrl+'projects', 
+				template: JST[path+'buyer/project/_lists'],
+				controller: 'ListProjectCtrl'
+			})
+			.state('create_project',
+			{
+				url: baseUrl+'create-project',
+				template: JST[path+'buyer/project/_create'],
+				controller: 'NewProjectCtrl'
+			})
+			.state('edit_project', {
+				url: baseUrl+'edit-project/:id',
+				template: JST[path+'buyer/project/_edit'],
+				controller: 'EditProjectCtrl'
+			});
+
  }]);
