@@ -1,108 +1,97 @@
-
-                <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-
-                <div class="clearfix"></div>
-                <div class="content">
-                    <div class="page-title " style="margin-left: 15px;">
-                        <h3>Create project</h3>
+<div class="col-md-12">
+    <div class="grid simple col-md-12">
+        <div class="grid-title no-border">
+            <h3>Create a<span class="semi-bold"> Project</span></h3>
+        </div>
+        <div class="grid-body no-border "> <br>
+            <div class="alert alert-info">
+                <button class="close" data-dismiss="alert"></button>
+                Your project post is published to the job board where it's viewed by our makers. Be sure to     update your post whenever new decisions are made.
+            </div>
+            <form id="form_iconic_validation" name="form" ng-submit="create(project)" novalidate="novalidate">
+                <div class="row form-row">
+                    <h3 style="margin-left: 14px;margin-top: -5px;">Project <span class="semi-bold">Information</span></h3>
+                    <div class="col-md-6" ng-class="{'has-error': form.title.$dirty && form.title.$invalid}">
+                        <label class="form-label">Project Title</label>
+                        <input type="text"  required ng-model="project.title" name="title" placeholder="Dining Table" class="form-control has-instructions" data-content="<div class='form_tip' style='top: 76px;'>  <h3 class='form_tip_title icon-lightbulb'>&nbsp;Project title Tip</h3>  <br/><br/><p class='form_tip_text'>Specify the type of object (you can specify size and materials separately). If you need help, simply start typing and we willll make recommendations.</p>  <div class='form_tip_heading'>Examples:</div>  <ul class='form_tip_list'>    <li>Dining table</li>    <li>Engagement ring</li>    <li>Men wedding band</li>  </ul></div>"
+                        title="" data-toggle="popover" data-placement="top" >
+                        <span class="error" ng-show="form.title.$error.required&&form.title.$dirty">
+                        <label for="title" class="error">This field is required.</label>
+                        </span>
                     </div>
-                    <div class="col-md-12">
-                        <div class="grid simple col-md-12">
+                </div>
+                <hr>
+                <div class="form-row" ng-class="{'has-error': form.description.$dirty&&form.description.$invalid}">
+                    <label class="form-label">Project Description</label>
+                    <textarea placeholder="" class="form-control has-instructions" required ng-model="project.description" name="description" style="height: 142px;" data-content="<div class='form_tip' style='top: 76px;'>  <h3 class='form_tip_title icon-lightbulb'>&nbsp;Project description Tip</h3>  <br/><br/><p class='form_tip_text'>Where possible, be specific about your preferred style, finishing touches, how your completed project will be used, and/or your budget. This is also the chance to let the Maker community know why your project is special to you. If you're still in the 'concept' phase and seeking project guidance or inspiration, include that information as well.</p></div>"
+                    title="" data-toggle="popover" data-placement="top"></textarea>
+                    <span class="error" ng-show="form.description.$error.required&&form.description.$dirty">
+                    <label for="title" class="error">This field is required.</label>
+                    </span>
+                </div>
+                <hr>
+                <div class="form-group col-md-12" style="padding-left:0px;">
+                    <h3>What <span class="semi-bold">size and dimensions</span> do you need?</h3>
+                    <div class="radio radio-success" >
+                        <div class="col-md-6" ng-show="project.has_dimension" style="position: absolute;margin-top: -11px;padding-left: 1px;margin-left: 23px;z-index: 100;">
+                            <input type="text" ng-model="project.dimension" name="dimension" placeholder="Dimensions, measurement, sizing info" data-content="<div class='form_tip' style='top: 76px;'>  <h3 class='form_tip_title icon-lightbulb'>&nbsp;Size Tip</h3>  <br/><br/><p class='form_tip_text'>Be as specific as possible; even general guidance helps. Not sure about your size requirements? Let us know, so interested Makers can ask the right questions to ensure you get exactly what you want.</p><div class='form_tip_heading'>Examples:</div>  <ul class='form_tip_list'>    <li>8' x 3' x 3'</li>    <li>Seats 8 people</li>    <li>Size 7</li>  </ul></div>"
+                            title="" data-toggle="popover" data-placement="top"
+                            class="form-control has-instructions">
+                        </div>
+                        <input id="yes" type="radio" name="optionyes" ng-model="project.has_dimension" value="true" checked="checked" >
+                        <label for="yes">I know the size</label> <br>
+                        <input id="no" type="radio" name="optionyes" ng-model="project.has_dimension" value="false">
+                        <label for="no">I need a Maker to help me with the size</label>
+                    </div>
+                </div>
+                <hr>
+                <div class="row form-row">
+                    <div class="col-md-6" ng-hide="hasPhotos">
+                        <div class="grid simple">
                             <div class="grid-title no-border">
-                                <h4>Create a<span class="semi-bold"> Project</span></h4>
-
+                                <h4>Drag n Drop <span class="semi-bold">Uploader</span></h4>
                             </div>
-                            <div class="grid-body no-border "> <br>
-                                <div class="alert alert-info">
-                                    <button class="close" data-dismiss="alert"></button>
-                                Your project post is published to the job board where it's viewed by our makers. Be sure to update your post whenever new decisions are made.</div>
-                                <form id="form_iconic_validation" action="#" novalidate="novalidate">
-                                    <div class="form-group col-md-12" style="padding-left:0px;">
-                                        <h3>Project <span class="semi-bold">settings</span></h3>
-                                        <div class="radio radio-success">
-                                            <input id="yes" type="radio" name="optionyes" value="yes">
-                                            <label for="yes">I want to hear from new interested Makers</label> <br>
-                                            <input id="no" type="radio" name="optionyes" value="no" checked="checked">
-                                            <label for="no">I don't want to hear from any more Makers</label>
+                            <div class="grid-body no-border">
+                                <div class="row-fluid">
+                                        <div class="fallback">
+                                            <input name="file" type="file" data-url="test" multiple class="project_pics" />
                                         </div>
-                                    </div>
-                                    <hr>
-
-                                    <div class="row form-row">
-                                        <h3 style="margin-left: 14px;margin-top: -5px;">Project <span class="semi-bold">Information</span></h3>
-                                        <div class="col-md-6">
-                                            <label class="form-label">Project Title</label>
-                                            <input type="text" placeholder="First Name" class="form-control  " name="txtFirstName" id="txtFirstName">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label">Photos</label>
-                                            <span class="help">Upload your photos here</span>&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-success btn-cons"><i class="icon-cloud-upload"></i>&nbsp;&nbsp;<span class="bold">Upload</span></button>
-                                        </div>
-
-                                    </div>
-                                    <div class="">
-                                        <label class="form-label">Project Description</label>
-                                        <textarea class="form-control" style="height: 142px;"></textarea>
-                                    </div>
-                                    <hr>
-                                    <div class="form-group col-md-12" style="padding-left:0px;">
-                                        <h3>Project <span class="semi-bold">Budget</span></h3>
-                                        <div class="radio radio-success">
-                                            <input id="quote" type="radio" name="optionyes1" value="quote">
-                                            <label for="yes">I want to get quotes from Makers</label> <br>
-                                            <input id="budget" type="radio" name="no" value="budget" >
-                                            <label for="no">I am working within a budget</label>
-                                        </div>
-                                        <ul class="col-md-3" style="list-style-type :none;">
-                                            <li>
-                                                <div class="col-md-12">
-                                                    <div class="radio">
-                                                        <input id="male" type="radio" name="gender" value="male" checked="checked">
-                                                        <label for="male">Under $100</label><br>
-                                                        <input id="female" type="radio" name="gender" value="female">
-                                                        <label for="female">$100 to $250</label>
-                                                        <br>
-                                                        <input id="female" type="radio" name="gender" value="female">
-                                                        <label for="female">$250 to $500</label>
-                                                        <br>
-                                                        <input id="female" type="radio" name="gender" value="female">
-                                                        <label for="female">$500 to $1,000</label>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <ul class="col-md-6"  style="list-style-type :none;">
-                                            <li>
-                                                <div class="col-md-12">
-                                                    <div class="radio">
-                                                        <input id="male" type="radio" name="gender" value="male" checked="checked">
-                                                        <label for="male">$1,000 to $2,500</label><br>
-                                                        <input id="female" type="radio" name="gender" value="female">
-                                                        <label for="female">$2,500 to $5,000</label>
-                                                        <br>
-                                                        <input id="female" type="radio" name="gender" value="female">
-                                                        <label for="female">$5,000 to $10,000</label>
-                                                        <br>
-                                                        <input id="female" type="radio" name="gender" value="female">
-                                                        <label for="female">Over $10,000</label>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-
-
-
-
-                                    <div class="form-actions" style="margin-top: 125px;">
-                                        <div class="pull-right">
-                                            <button type="submit" class="btn btn-danger btn-cons"><i class="icon-ok"></i> Save Changes</button>
-                                            <button type="button" class="btn btn-white btn-cons">Cancel</button>
-                                        </div>
-                                    </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <hr>
+                <div class="form-group col-md-12" style="padding-left:0px;">
+                    <h3>Project <span class="semi-bold">Budget</span></h3>
+                    <div class="row-fluid">
+                        <div class="checkbox check-success  ">
+                            <input id="has_budget" type="checkbox" name="has_budget" ng-model="project.has_budget" value="true" checked="checked">
+                            <label for="has_budget">I am working with a budget</label>
+                        </div>
+                    </div>
+                    <div ng-show="project.has_budget">
+                        <div class="row">
+                            <div class="col-md-4" ng-class="{'has-error': form.budget.$dirty && form.budget.$invalid}">
+                                <div class="input-group">
+                                    <span class="input-group-addon">$</span>
+                                    <input type="text" placeholder="100" class="form-control" name="budget" ng-model="project.budget">
+                                    <span class="input-group-addon">.00</span>
+                                </div>
+                                <span class="error" ng-show="form.budget.$dirty">
+                                <label for="title" class="error" ng-show="form.budget.$error.integer">This field should be integer.</label>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions" style="margin-top: 125px;">
+                        <div class="pull-right">
+                            <button type="submit" ng-disabled="form.$invalid" class="btn btn-danger btn-cons"><i class="icon-ok"></i> Save Changes</button>
+                            <button type="button" class="btn btn-white btn-cons">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

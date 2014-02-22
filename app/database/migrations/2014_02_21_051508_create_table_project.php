@@ -12,7 +12,17 @@ class CreateTableProject extends Migration {
 	 */
 	public function up()
 	{
-		//
+		Schema::create('projects', function($table){
+			$table->increments('id');
+			$table->string('title');
+			$table->text('description');
+			$table->boolean('has_dimension');
+			$table->string('dimension');
+			$table->boolean('has_budget');
+			$table->string('budget');
+			$table->softDeletes();
+			$table->timeStamps();
+		});
 	}
 
 	/**
@@ -22,7 +32,7 @@ class CreateTableProject extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::drop('projects');
 	}
 
 }

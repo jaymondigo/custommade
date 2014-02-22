@@ -1,0 +1,27 @@
+.sub-nav {
+    list-style: inherit;
+}
+.sub-nav li a {
+    color: #8B91A0;
+}
+.sub-nav li.active a, .sub-nav li.active {
+    color: white !important;
+}
+.popover{
+    width: 660px;
+    background: #FFCDCD !important;
+    left: 0px !important;
+}
+.popover-title{
+	display: none;
+}
+.popover.right .arrow:after{
+	border-right-color: #FFCDCD !important;
+	z-index: 99999999 !important;	
+}
+.popover.top .arrow:after{
+	border-top-color: #FFCDCD !important;
+}
+.form-control:focus{
+    border-color: #66AFE9 !important;
+}
