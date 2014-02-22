@@ -48,7 +48,7 @@ window.DashApp = angular.module('dash_app', ['ui.router','ngResource','ngSanitiz
 					});
 		}
 
-		$urlRouterProvider
+		$stateProvider
 			.state('list_project', {
 				url: baseUrl+'projects', 
 				template: JST[path+'buyer/project/_lists'],

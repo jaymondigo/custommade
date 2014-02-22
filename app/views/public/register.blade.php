@@ -5,7 +5,7 @@
 @stop
 @section('body')
 <!-- body attr-->
-@section('body_attr')class="document-body error-body no-top" ng-app="pubApp"
+@section('body_attr')class="document-body error-body no-top" ng-app="pub_app"
 @stop
 <!-- body attr-->
 <!-- Wrapper --> 

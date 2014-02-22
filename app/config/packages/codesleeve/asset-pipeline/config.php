@@ -145,6 +145,6 @@ return array(
 	| set to 'production' but false otherwise
 	|
 	*/
-	'concat' => array('local','production'),
+	'concat' => false,//array('local','production'),
 
 );
