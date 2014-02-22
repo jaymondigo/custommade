@@ -3,8 +3,10 @@
 class SessionController extends BaseController {
 
 	public function getLogin()
-	{	 
-		return View::make('public.login');
+	{	if (Auth::check())
+			return Redirect::to('/member');
+		else
+			return View::make('public.login');
 	}
 	public function postLogin()
 	{
@@ -231,12 +233,12 @@ class SessionController extends BaseController {
 			echo "new user";
 	        
 			Auth::login($user);
-			echo Redirect::to('/');
+			echo Redirect::to('/member');
 		}else{ 
 
 			$user->updateUniques();
 			Auth::login($user);
-			echo Redirect::to('/');
+			echo Redirect::to('/member');
 		}
 	}
 
