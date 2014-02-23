@@ -30,69 +30,18 @@
             <!-- BEGIN CHAT TOGGLER -->
             <div class="pull-right">
                 <div class="chat-toggler">
-                    <a href="javascript:void(0)" class="dropdown-toggle" id="my-task-list" data-placement="bottom"  data-content='' data-toggle="dropdown">
-                    <div class="user-details">
-                        <div class="username">
+                    <div class="btn-group"> <a class="dropdown-toggle btn-demo-space" data-toggle="dropdown" href style="width: 150px;">
+                        <div class="profile-pic">
+                            <img src="assets/img/profiles/avatar_small.jpg"  alt="" data-src="assets/img/profiles/avatar_small.jpg" data-src-retina="assets/img/profiles/avatar_small2x.jpg" width="35" height="35" />
+                        </div>
+                        <div class="username" style="padding: 9px 6px;">
+                            <div class="iconset top-down-arrow" style="margin-top: 9px;"></div>
                             John <span class="bold">Smith</span>
-                        </div>
-                    </div>
-                    <div class="iconset top-down-arrow" ></div>
-                    </a>
-                    <div id="notification-list" style="display:none">
-                        <div style="width:300px">
-
-                            <div class="notification-messages info">
-                                <a href>
-                                <div class="iconholder">
-                                    <i class="icon-user"></i>
-                                </div>
-                                <div class="message-wrapper">
-                                    <div class="heading">
-                                        Edit Account
-                                    </div>
-                                    <div class="description">
-                                        Update your info
-                                    </div>
-                                </div>
-                                </a>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="notification-messages info">
-                                <a href >
-                                <div class="iconholder">
-                                    <i class="icon-inbox"></i>
-                                </div>
-                                <div class="message-wrapper">
-                                    <div class="heading">
-                                        Messages
-                                    </div>
-                                    <div class="description">
-                                        Open this to view your messages
-                                    </div>
-                                </div>
-                                </a>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="notification-messages danger">
-                                <a ng-href="{{baseUrl+'/session/logout'}}" >
-                                <div class="iconholder">
-                                    <i class="icon-signout"></i>
-                                </div>
-                                <div class="message-wrapper">
-                                    <div class="heading">
-                                       Logout
-                                    </div>
-                                    <div class="description">
-                                        You will be log out of this session
-                                    </div>
-                                </div>
-                                </a>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="profile-pic">
-                        <img src="assets/img/profiles/avatar_small.jpg"  alt="" data-src="assets/img/profiles/avatar_small.jpg" data-src-retina="assets/img/profiles/avatar_small2x.jpg" width="35" height="35" />
+                        </div>  </a>
+                        <ul class="dropdown-menu">
+                            <li><a ui-sref="account" style="width: 96%;">Account</a></li>
+                            <li><a ui-sref="logout" style="width: 96%;">Logout</a></li> 
+                        </ul>
                     </div>
                 </div>
             </div>

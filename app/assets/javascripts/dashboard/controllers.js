@@ -1,5 +1,5 @@
-DashApp.controller('mainCtrl', ['$scope', '$state',
-    function($scope, $state) {
+DashApp.controller('mainCtrl', ['$scope', '$state', 'User',
+    function($scope, $state, User) {
         $scope.$on('$locationChangeStart', function(scope, next, current) {
             reloadScripts($('base').attr('href') + '/assets/plugin.js');
         });
@@ -26,6 +26,10 @@ DashApp.controller('mainCtrl', ['$scope', '$state',
                 icon: 'icon-thumbs-up'
             }
         };
+
+        $scope.currentUser = User.get({
+            id: 'me'
+        })
     }
 ])
 //maker controllers
@@ -37,23 +41,72 @@ DashApp.controller('mainCtrl', ['$scope', '$state',
     function($scope, $templateCache) {
         $templateCache.put('sidebar-view', JST[path + 'buyer/sidebar']);
     }
-]).controller('ListProjectCtrl', ['$scope',
-    function($scope) {}
-]).controller('NewProjectCtrl', ['$scope', '$templateCache', 'Project',
-    function($scope, $templateCache, Project) {
+]).controller('ListProjectCtrl', ['$scope', 'Project',
+    function($scope, Project) {
+        $scope.projects = Project.query();
+
+        $scope.delete = function(project, i) {
+            project.$delete({
+                id: project.id
+            });
+            $scope.projects.splice(i, 1);
+        }
+    }
+]).controller('NewProjectCtrl', ['$scope', '$templateCache', '$location', 'Project',
+    function($scope, $templateCache, $location, Project) {
         $scope.$parent.navs.projects.childNavs = [{
             state: 'buyer.new_project',
             label: 'New',
             icon: 'icon-pencil'
         }];
+
         $scope.project = Project.get({
             id: 'create'
         });
 
         $scope.hasPhotos = false;
-        
-        $scope.create = function(project){
-            project.$save();
+
+        $scope.create = function(project) {
+            project.type = 'draft';
+            project.$save(function(data) {
+                $location.path(baseRoute + 'buyer/preview-project/' + data.id)
+            });
+        }
+
+        $scope.saveDraft = function(project) {
+            project.type = 'draft';
+            project.$save(function(data) {
+                $location.path(baseRoute + 'buyer/projects');
+            });
         }
     }
 ])
+    .controller('PreviewProjectCtrl', ['$scope', '$location', 'Project', '$stateParams',
+        function($scope, $location, Project, $stateParams) {
+            id = $stateParams.id;
+            $scope.project = Project.get({
+                id: id
+            });
+
+            $scope.publish = function(project) {
+                project.type = 'published';
+                Project.update({
+                    id: project.id
+                }, project, function(data) {
+                    $location.path(baseRoute + 'buyer/projects');
+                });
+            }
+        }
+    ])
+    .controller('ViewProjectCtrl', ['$scope', '$stateParams', 'Project',
+        function($scope, $stateParams, Project) {
+            id = $stateParams.id;
+            $scope.project = Project.get({
+                id: id
+            });
+
+            $scope.edit = function(project) {
+
+            }
+        }
+    ])

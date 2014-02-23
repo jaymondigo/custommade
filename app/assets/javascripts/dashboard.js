@@ -21,6 +21,7 @@
 //= require_tree ./dashboard/partials
 //= require ./dashboard/app 
 //= require ./dashboard/directives 
+//= require ./dashboard/filters
 //= require ./dashboard/services
 //= require ./dashboard/controllers
 

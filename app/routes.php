@@ -23,9 +23,12 @@ Route::group(array('before' => 'auth'), function(){
 		Route::get('member', array('as'=>'member', 'uses'=>'DashboardController@getMember'));
 		Route::get('member/{uri1}', array('as'=>'member', 'uses'=>'DashboardController@getMember'));
 		Route::get('member/{uri1}/{uri2}', array('as'=>'member', 'uses'=>'DashboardController@getMember'));
+		Route::get('member/{uri1}/{uri2}/{uri3}', array('as'=>'member', 'uses'=>'DashboardController@getMember'));
+		Route::get('member/{uri1}/{uri2}/{uri3}/{uri4}', array('as'=>'member', 'uses'=>'DashboardController@getMember'));
 
+		Route::post('project/photo', array('uses'=>'ProjectController@photo'));
+		Route::post('project/photo/delete', array('uses'=>'ProjectController@deletePhoto'));
 		Route::resource('project', 'ProjectController');
-
 });
 
 Route::any('fb-login', array('as'=>'fb_login','uses'=>'SessionController@loginWithFacebook'));

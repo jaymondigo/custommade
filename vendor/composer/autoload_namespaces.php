@@ -23,7 +23,6 @@ return array(
     'Stack' => array($vendorDir . '/stack/builder/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log'),
     'Predis' => array($vendorDir . '/predis/predis/lib'),
-    'PayPal' => array($vendorDir . '/paypal/sdk-core-php/lib', $vendorDir . '/paypal/rest-api-sdk-php/lib'),
     'Patchwork' => array($vendorDir . '/patchwork/utf8/class'),
     'PHPParser' => array($vendorDir . '/nikic/php-parser/lib'),
     'OAuth\\Unit' => array($vendorDir . '/lusitanian/oauth/tests'),
@@ -48,5 +47,4 @@ return array(
     'Boris' => array($vendorDir . '/d11wtq/boris/lib'),
     'Assetic' => array($vendorDir . '/kriswallsmith/assetic/src'),
     'Artdarek\\OAuth' => array($vendorDir . '/artdarek/oauth-4-laravel/src'),
-    'Anouar\\Paypalpayment' => array($vendorDir . '/anouar/paypalpayment/src'),
 );

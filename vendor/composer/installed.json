@@ -838,12 +838,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/phpseclib/phpseclib.git",
-            "reference": "8dc659d694d3e0af68688600908ff1cac9d079dc"
+            "reference": "76c9692908a6c25601df2db373043fcbb335332e"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/8dc659d694d3e0af68688600908ff1cac9d079dc",
-            "reference": "8dc659d694d3e0af68688600908ff1cac9d079dc",
+            "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/76c9692908a6c25601df2db373043fcbb335332e",
+            "reference": "76c9692908a6c25601df2db373043fcbb335332e",
             "shasum": ""
         },
         "require": {
@@ -857,7 +857,7 @@
             "ext-mcrypt": "Install the Mcrypt extension in order to speed up a wide variety of cryptographic operations.",
             "pear-pear/PHP_Compat": "Install PHP_Compat to get phpseclib working on PHP < 4.3.3."
         },
-        "time": "2014-02-17 17:53:54",
+        "time": "2014-02-23 01:03:22",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1986,144 +1986,6 @@
         ]
     },
     {
-        "name": "paypal/sdk-core-php",
-        "version": "v2.4.3",
-        "version_normalized": "2.4.3.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/paypal/sdk-core-php.git",
-            "reference": "226d3492f80847f09c99debb4d3220d5e744ddc8"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/paypal/sdk-core-php/zipball/226d3492f80847f09c99debb4d3220d5e744ddc8",
-            "reference": "226d3492f80847f09c99debb4d3220d5e744ddc8",
-            "shasum": ""
-        },
-        "require": {
-            "ext-curl": "*",
-            "php": ">=5.3.0"
-        },
-        "time": "2013-09-11 14:27:58",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "PayPal": "lib/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "Apache2"
-        ],
-        "authors": [
-            {
-                "name": "PayPal",
-                "homepage": "https://github.com/paypal/sdk-core-php/contributors"
-            }
-        ],
-        "description": "PayPal Core SDK for PHP",
-        "homepage": "https://github.com/paypal/sdk-core-php",
-        "keywords": [
-            "paypal",
-            "php",
-            "sdk"
-        ]
-    },
-    {
-        "name": "paypal/rest-api-sdk-php",
-        "version": "v0.7.0",
-        "version_normalized": "0.7.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/paypal/rest-api-sdk-php.git",
-            "reference": "c61ee5bccae2cd3c60bd1ffe42939a0570abed95"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/paypal/rest-api-sdk-php/zipball/c61ee5bccae2cd3c60bd1ffe42939a0570abed95",
-            "reference": "c61ee5bccae2cd3c60bd1ffe42939a0570abed95",
-            "shasum": ""
-        },
-        "require": {
-            "ext-curl": "*",
-            "ext-json": "*",
-            "paypal/sdk-core-php": "2.4.*",
-            "php": ">=5.3.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "3.7.*"
-        },
-        "time": "2013-05-30 11:35:33",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "PayPal": "lib/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "Apache2"
-        ],
-        "authors": [
-            {
-                "name": "PayPal",
-                "homepage": "https://github.com/paypal/rest-api-sdk-php/contributors"
-            }
-        ],
-        "description": "PayPal's PHP SDK for REST APIs",
-        "homepage": "https://github.com/paypal/rest-api-sdk-php",
-        "keywords": [
-            "payments",
-            "paypal",
-            "rest",
-            "sdk"
-        ]
-    },
-    {
-        "name": "anouar/paypalpayment",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/xroot/laravel-paypalpayment.git",
-            "reference": "dcaf15af6af2dc78741fa46d30afb6fe06f8f4b1"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/xroot/laravel-paypalpayment/zipball/dcaf15af6af2dc78741fa46d30afb6fe06f8f4b1",
-            "reference": "dcaf15af6af2dc78741fa46d30afb6fe06f8f4b1",
-            "shasum": ""
-        },
-        "require": {
-            "ext-curl": "*",
-            "ext-json": "*",
-            "illuminate/support": "4.1.x",
-            "paypal/rest-api-sdk-php": "v0.7.0",
-            "php": ">=5.3.0"
-        },
-        "time": "2013-12-23 13:17:48",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Anouar\\Paypalpayment": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-2-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Anouar",
-                "email": "dtekind@gmail.com"
-            }
-        ],
-        "description": "laravel-paypalpayment is simple package help you process direct credit card payments, stored credit card payments and PayPal account payments with your L4 projects using paypal REST API SDK."
-    },
-    {
         "name": "symfony/process",
         "version": "2.4.x-dev",
         "version_normalized": "2.4.9999999.9999999-dev",
@@ -2295,12 +2157,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/laravel/framework.git",
-            "reference": "cf0554dd3142105837c5f4901fd04ff5dcb2f48b"
+            "reference": "78f0c1c294f861eed3801e6b0d3a6b958a539182"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/laravel/framework/zipball/cf0554dd3142105837c5f4901fd04ff5dcb2f48b",
-            "reference": "cf0554dd3142105837c5f4901fd04ff5dcb2f48b",
+            "url": "https://api.github.com/repos/laravel/framework/zipball/78f0c1c294f861eed3801e6b0d3a6b958a539182",
+            "reference": "78f0c1c294f861eed3801e6b0d3a6b958a539182",
             "shasum": ""
         },
         "require": {
@@ -2368,7 +2230,7 @@
         "suggest": {
             "doctrine/dbal": "Allow renaming columns and dropping SQLite columns."
         },
-        "time": "2014-02-20 17:03:07",
+        "time": "2014-02-22 15:19:10",
         "type": "library",
         "extra": {
             "branch-alias": {

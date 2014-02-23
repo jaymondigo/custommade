@@ -9,8 +9,7 @@
     	"laravelbook/ardent": "dev-master",
     	"artdarek/oauth-4-laravel": "dev-master",
     	"codesleeve/stapler": "dev-master",
-    	"fitztrev/laravel-html-minify": "dev-master",
-    	"anouar/paypalpayment": "dev-master"
+    	"fitztrev/laravel-html-minify": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

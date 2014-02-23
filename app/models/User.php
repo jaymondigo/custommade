@@ -5,7 +5,21 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 use LaravelBook\Ardent\Ardent;
 
 class User extends Ardent implements UserInterface, RemindableInterface {
+    
+    use Codesleeve\Stapler\Stapler;
 
+	public function __construct(array $attributes = array()) {
+      $this->hasAttachedFile('avatar', [
+          'styles' => [
+            'medium' => '300x300#',
+            'thumb' => '80x80#'
+          ],
+          'default_url' => '/system/missing.jpg',
+          'keep_old_files' => true
+      ]);
+
+      parent::__construct($attributes);
+    } 
 	/**
 	 * The database table used by the model.
 	 *
@@ -23,6 +37,7 @@ class User extends Ardent implements UserInterface, RemindableInterface {
 	 */
 	protected $hidden = array('password');
 
+	protected $appends = array('full_name','avatar_url');
 	/**
 	 * Get the unique identifier for the user.
 	 *
@@ -35,6 +50,22 @@ class User extends Ardent implements UserInterface, RemindableInterface {
         'last_name'              => 'required|between:4,16',
         'password'              => 'required', 
     );
+ 
+    public function projects(){
+    	return $this->hasMany('Project');
+    }
+
+    public function getFullNameAttribute(){
+    	return $this->first_name.' '.$this->last_name;
+    }
+
+    public function getAvatarUrlAttribute(){
+      return array(
+                    'small'=>$this->avatar->url('thumb'),
+                    'medium'=>$this->avatar->url('medium'),
+                    'original'=>$this->avatar->url()
+                    );
+    }
 
     public function beforeSave()
     {

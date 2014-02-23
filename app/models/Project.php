@@ -10,8 +10,17 @@ class Project extends Eloquent {
 		$this->has_budget = false;
 		$this->dimension = '';
 		$this->budget = '';
+		$this->type = 'draft';
 		parent::__construct();
 		
+	}
+	protected $with = array('user');
+
+	public function photos(){
+		return $this->hasMany('ProjectPhoto');
+	}
+	public function user(){
+		return $this->belongsTo('User');
 	}
 	
 }

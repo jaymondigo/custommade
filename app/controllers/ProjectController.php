@@ -29,15 +29,16 @@ class ProjectController extends \BaseController {
 	 */
 	public function store()
 	{ 	
-		$p = new Project();
-		$p->title = Input::get('title');
-		$p->description = Input::get('description');
-		$p->has_dimension = Input::get('has_dimension');
-		$p->has_budget = Input::get('has_budget');
-		$p->dimension = Input::get('dimension');
-		$p->budget = Input::get('budget');
-		$p->save();
-		return 1;
+		$obj = new Project();
+		$obj->title = Input::get('title');
+		$obj->slug = createSlug($obj->title);
+		$obj->description = Input::get('description');
+		$obj->has_dimension = Input::get('has_dimension');
+		$obj->has_budget = Input::get('has_budget');
+		$obj->dimension = Input::get('dimension');
+		$obj->budget = Input::get('budget');
+		$obj->save();
+		return $obj;
 	}
 
 	/**
@@ -46,9 +47,13 @@ class ProjectController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
-	{
-		return Project::find($id);
+	public function show($id_or_slug)
+	{	
+		$obj = Project::find($id_or_slug);
+		if(is_object($obj))
+			return $obj;
+		else 
+			return Project::where('slug', $id_or_slug)->first();
 	}
 
 	/**
@@ -69,10 +74,13 @@ class ProjectController extends \BaseController {
 	 * @return Response
 	 */
 	public function update($id)
-	{
-		$project = Project::find($id);
-		$project->update(Input::all());
-		return $project;
+	{	
+		$inputs = Input::all();
+		$inputs['slug'] = createSlug($inputs['title']);
+
+		$obj = Project::find($id);
+		$obj->update($inputs);
+		return $obj;
 	}
 
 	/**
@@ -83,8 +91,20 @@ class ProjectController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		$project = Project::find($id);
-		return $project->destroy();
+		$obj = Project::find($id);
+		return $obj->destroy($id);
+	}
+
+	public function photo(){  
+
+		$obj = new ProjectPhoto();
+		
+
+		return $obj;
+	}
+
+	public function deletePhoto(){
+		ProjectPhoto::delete(Input::get('id'));
 	}
 
 }

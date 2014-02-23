@@ -9,6 +9,7 @@
                 Your project post is published to the job board where it's viewed by our makers. Be sure to     update your post whenever new decisions are made.
             </div>
             <form id="form_iconic_validation" name="form" ng-submit="create(project)" novalidate="novalidate">
+                <input type="hidden" ng-value="{{form.$invalid==false ? '1' : '0'}}" name="type" ng-model="project.type"/>
                 <div class="row form-row">
                     <h3 style="margin-left: 14px;margin-top: -5px;">Project <span class="semi-bold">Information</span></h3>
                     <div class="col-md-6" ng-class="{'has-error': form.title.$dirty && form.title.$invalid}">
@@ -46,20 +47,21 @@
                 </div>
                 <hr>
                 <div class="row form-row">
-                    <div class="col-md-6" ng-hide="hasPhotos">
-                        <div class="grid simple">
-                            <div class="grid-title no-border">
-                                <h4>Drag n Drop <span class="semi-bold">Uploader</span></h4>
-                            </div>
-                            <div class="grid-body no-border">
-                                <div class="row-fluid">
-                                        <div class="fallback">
-                                            <input name="file" type="file" data-url="test" multiple class="project_pics" />
-                                        </div>
-                                </div>
-                            </div>
-                        </div>
+                     <div class="col-md-8">
+              <div class="grid simple">
+                <div class="grid-title no-border">
+                  <h4>Add <span class="semi-bold">Photos</span></h4>
+                </div>
+                <div class="grid-body no-border">
+                  <div class="row-fluid"> 
+                     <!-- File Upload -->
+                    <div id="project_photos" class="dropzone">
                     </div>
+                    <!-- End File Upload -->
+                  </div>
+                </div>
+              </div>
+            </div>
                 </div>
                 <hr>
                 <div class="form-group col-md-12" style="padding-left:0px;">
@@ -86,8 +88,9 @@
                     </div>
                     <div class="form-actions" style="margin-top: 125px;">
                         <div class="pull-right">
-                            <button type="submit" ng-disabled="form.$invalid" class="btn btn-danger btn-cons"><i class="icon-ok"></i> Save Changes</button>
-                            <button type="button" class="btn btn-white btn-cons">Cancel</button>
+                            <button type="submit" class="btn btn-warning btn-cons" ng-click="saveDraft(project)"><i class="icon-book"></i> Save as draft</button>
+                            <button type="submit" ng-disabled="form.$invalid" class="btn btn-success btn-cons"><i class="icon-ok"></i> Preview</button>
+                            <a ui-sref="buyer.projects" class="btn btn-white btn-cons">Cancel</a>
                         </div>
                     </div>
                 </div>
