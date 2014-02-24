@@ -1,5 +1,5 @@
-DashApp.controller('mainCtrl', ['$scope', '$state', 'User',
-    function($scope, $state, User) {
+DashApp.controller('mainCtrl', ['$scope', '$state', 'User', '$location',
+    function($scope, $state, User, $location) {
         $scope.$on('$locationChangeStart', function(scope, next, current) {
             reloadScripts($('base').attr('href') + '/assets/plugin.js');
         });
@@ -27,9 +27,18 @@ DashApp.controller('mainCtrl', ['$scope', '$state', 'User',
             }
         };
 
-        $scope.currentUser = User.get({
-            id: 'me'
-        })
+        User.get({
+                id: 'me'
+            }, {},
+            function(data) {
+                $scope.rawUserData = data;
+                $scope.currentUser = angular.copy($scope.rawUserData);
+            });
+
+        $scope.search = function(entry) {
+            $location.path('member/search/q/' + entry);
+        }
+
     }
 ])
 //maker controllers
@@ -108,5 +117,16 @@ DashApp.controller('mainCtrl', ['$scope', '$state', 'User',
             $scope.edit = function(project) {
 
             }
+        }
+    ])
+    .controller('SearchCtrl', ['$scope', '$stateParams', 'Search', '$templateCache',
+
+        function($scope, $stateParams, Search, $templateCache) {
+
+            entry = $stateParams.search_entry;
+            $scope.results = Search.query({
+                q: entry
+            });
+
         }
     ])

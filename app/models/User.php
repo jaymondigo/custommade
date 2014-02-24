@@ -8,11 +8,11 @@ class User extends Ardent implements UserInterface, RemindableInterface {
     
     use Codesleeve\Stapler\Stapler;
 
-	public function __construct(array $attributes = array()) {
+    public function __construct(array $attributes = array()) {
       $this->hasAttachedFile('avatar', [
           'styles' => [
-            'medium' => '300x300#',
-            'thumb' => '80x80#'
+            'medium' => '300x300',
+            'thumb' => '80x80'
           ],
           'default_url' => '/system/missing.jpg',
           'keep_old_files' => true

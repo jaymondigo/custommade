@@ -108,6 +108,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Codesleeve\AssetPipeline\AssetPipelineServiceProvider',
 		'Fitztrev\LaravelHtmlMinify\LaravelHtmlMinifyServiceProvider',
+		'Codesleeve\Stapler\StaplerServiceProvider',		
 		'Artdarek\OAuth\OAuthServiceProvider', 
 	),
 

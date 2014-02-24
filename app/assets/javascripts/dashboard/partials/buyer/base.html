@@ -22,7 +22,9 @@
                 <ul class="nav quick-section">
                     <li class="m-r-10 input-prepend inside search-form no-boarder">
                         <span class="add-on"> <span class="iconset top-search"></span></span>
-                        <input name="" type="text"  class="no-boarder " placeholder="Search Dashboard" style="width:250px;">
+                        <form style="position: absolute; width:250px;" novalidate ng-submit="search(search_entry)">
+                        <input name="" type="text" ng-model="search_entry" name="search_entry" class="no-boarder " placeholder="Search Dashboard" style="width:250px;" > 
+                        </form>
                     </li>
                 </ul>
             </div>
@@ -30,17 +32,18 @@
             <!-- BEGIN CHAT TOGGLER -->
             <div class="pull-right">
                 <div class="chat-toggler">
-                    <div class="btn-group"> <a class="dropdown-toggle btn-demo-space" data-toggle="dropdown" href style="width: 150px;">
+                    <div class="btn-group"> <a class="dropdown-toggle btn-demo-space" data-toggle="dropdown" href style="width: 189px;">
                         <div class="profile-pic">
-                            <img src="assets/img/profiles/avatar_small.jpg"  alt="" data-src="assets/img/profiles/avatar_small.jpg" data-src-retina="assets/img/profiles/avatar_small2x.jpg" width="35" height="35" />
+                            <img ng-src="{{currentUser.avatar_url.small}}"  alt="" data-src="{{currentUser.avatar_url.small}}" data-src-retina="{{currentUser.avatar_url.small}}" width="35" height="35" />
                         </div>
                         <div class="username" style="padding: 9px 6px;">
                             <div class="iconset top-down-arrow" style="margin-top: 9px;"></div>
-                            John <span class="bold">Smith</span>
+                            <span ng-bind="currentUser.first_name"></span>
+                            <span class="bold" ng-bind="currentUser.last_name"></span>
                         </div>  </a>
                         <ul class="dropdown-menu">
-                            <li><a ui-sref="account" style="width: 96%;">Account</a></li>
-                            <li><a ui-sref="logout" style="width: 96%;">Logout</a></li> 
+                            <li><a ui-sref="account" style="width: 96%;"><i class="icon-user"></i>&nbsp;Account</a></li>
+                            <li><a ui-sref="logout" style="width: 96%;"><i class="icon-off"></i>&nbsp;Logout</a></li> 
                         </ul>
                     </div>
                 </div>

@@ -7,3 +7,21 @@ DashApp.factory('Project', ['$resource',
         });
     }
 ])
+    .factory('User', ['$resource',
+        function($resource) {
+            return $resource(baseUrl + '/user/:id', null, {
+                'update': {
+                    method: 'PUT'
+                }
+            });
+        }
+    ])
+    .factory('Search', ['$resource',
+        function($resource) {
+            return $resource(baseUrl + '/search/raw-data?q=:q', null, {
+                'update': {
+                    method: 'PUT'
+                }
+            });
+        }
+    ])

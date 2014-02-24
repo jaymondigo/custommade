@@ -3,7 +3,7 @@ currentUser = JSON.parse($('script[user]').attr('user'));
 path = 'dashboard/partials/';
 baseUrl = $('base').attr('href');
 var index = 0;
- 
+
 window.reloadScripts = function(src) {
     $('[src="' + src + '"]').remove();
     $('#flot-default-styles').remove();
@@ -11,7 +11,7 @@ window.reloadScripts = function(src) {
     scriptElement.type = 'text/javascript';
     scriptElement.src = src;
     document.getElementsByTagName('head')[0].appendChild(scriptElement);
-} 
+}
 window.DashApp = angular.module('dash_app', ['ui.router', 'ngResource', 'ngSanitize']).config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
     function($stateProvider, $urlRouterProvider, $locationProvider) {
         $locationProvider.html5Mode(true);
@@ -39,11 +39,11 @@ window.DashApp = angular.module('dash_app', ['ui.router', 'ngResource', 'ngSanit
             });
         }
         $stateProvider
-            .state('logout',{
+            .state('logout', {
                 url: 'session/logout',
-                controller:  function(){
-                    console.log(baseUrl+'/session/logout');
-                    document.location.href = baseUrl+'/session/logout';
+                controller: function() {
+                    console.log(baseUrl + '/session/logout');
+                    document.location.href = baseUrl + '/session/logout';
                 }
             })
             .state('buyer.index', {
@@ -66,7 +66,7 @@ window.DashApp = angular.module('dash_app', ['ui.router', 'ngResource', 'ngSanit
                 template: JST[path + 'buyer/project/_edit'],
                 controller: 'EditProjectCtrl'
             })
-            .state('buyer.view_project',{
+            .state('buyer.view_project', {
                 url: baseRoute + 'buyer/project/:id',
                 template: JST[path + 'buyer/project/_view'],
                 controller: 'ViewProjectCtrl'
@@ -77,9 +77,14 @@ window.DashApp = angular.module('dash_app', ['ui.router', 'ngResource', 'ngSanit
                 url: ''
             })
             .state('buyer.preview_project', {
-                url: baseRoute+'buyer/preview-project/:id',
+                url: baseRoute + 'buyer/preview-project/:id',
                 template: JST[path + 'buyer/project/_preview'],
                 controller: 'PreviewProjectCtrl'
-            });
+            })
+            .state('buyer.search_projects', {
+                url: baseRoute + 'search/q/:search_entry',
+                template: JST[path + 'buyer/search/_results'],
+                controller: 'SearchCtrl'
+            })
     }
-]); 
+]);

@@ -21,4 +21,5 @@
 //= require ./components/plugins-js/dropzone/dropzone
 //= require ./components/theme-js/dashboard
 // require ./components/theme-js/form_elements
+// require ./components/theme-js/search_results
 //= require ./components/theme-js/core

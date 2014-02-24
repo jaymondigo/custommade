@@ -2,9 +2,6 @@
 
 class UserController extends \BaseController {
 
-	public function myAccount(){
-		return Auth::user();
-	}
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -42,7 +39,10 @@ class UserController extends \BaseController {
 	 * @return Response
 	 */
 	public function show($id)
-	{
+	{	
+		if($id=='me')
+			return Auth::user();
+
 		return User::find($id);
 	}
 
@@ -54,7 +54,10 @@ class UserController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		if($id=='me')
+			$obj = Auth::user();
+		else
+			$obj = User::find($id);
 	}
 
 	/**

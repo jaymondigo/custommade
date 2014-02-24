@@ -17,6 +17,8 @@ Route::get('login', array('as'=>'login_route', 'uses'=>'SessionController@getlog
 Route::controller('session', 'SessionController'); 
 Route::get('signup', array('as'=>'signupRoute', 'uses'=>'SessionController@getSignup'));
 Route::controller('p', 'PublicController');    
+Route::get('search/raw-data', array('as'=>'search','uses'=>'DashboardController@search'));
+
 /* start apps routes =============================================== */
 
 Route::group(array('before' => 'auth'), function(){    
@@ -29,6 +31,7 @@ Route::group(array('before' => 'auth'), function(){
 		Route::post('project/photo', array('uses'=>'ProjectController@photo'));
 		Route::post('project/photo/delete', array('uses'=>'ProjectController@deletePhoto'));
 		Route::resource('project', 'ProjectController');
+		Route::resource('user', 'UserController');
 });
 
 Route::any('fb-login', array('as'=>'fb_login','uses'=>'SessionController@loginWithFacebook'));
