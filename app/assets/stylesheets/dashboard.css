@@ -1,0 +1,35 @@
+/**
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any Css/Less files within this directory, lib/assets/javascripts, vendor/assets/javascripts,
+ * can be referenced here using a relative path.
+ *
+ * It's not advisable to add code directly here, but if you do, it'll appear in whatever order it 
+ * gets included (e.g. say you have require_tree . then the code will appear after all the directories 
+ * but before any files alphabetically greater than 'application.css' 
+ *
+ *= require_tree ./dashboard
+ *= require ./components/plugins-style/pace/pace-theme-flash
+ *= require ./components/plugins-style/gritter/css/jquery.gritter
+ *= require ./components/plugins-style/bootstrap-datepicker/css/datepicker
+ *= require ./components/plugins-style/jquery-ricksaw-chart/css/rickshaw
+ *= require ./components/plugins-style/jquery-morris-chart/css/morris
+ *= require ./components/plugins-style/jquery-slider/css/jquery.sidr.light
+ *= require ./components/plugins-style/boostrap-slider/css/slider
+ *= require ./components/plugins-style/ios-switch/ios7-switch
+ *= require ./components/plugins-style/jquery-jvectormap/css/jquery-jvectormap-1.2.2
+ *= require ./components/plugins-style/boostrap-checkbox/css/bootstrap-checkbox
+ *= require ./components/plugins-style/bootstrap-select2/select2
+ *= require ./components/plugins-style/boostrapv3/css/bootstrap
+ *= require ./components/plugins-style/boostrapv3/css/bootstrap-theme
+ *= require ./components/plugins-style/font-awesome/css/font-awesome
+ *= require ./components/plugins-style/dropzone/css/dropzone
+ *= require ./components/theme-style/animate
+ *= require ./components/theme-style/style
+ *= require ./components/theme-style/responsive
+ *= require ./components/theme-style/custom-icon-set
+ *= require_tree ./globals
+ */
+
+ 

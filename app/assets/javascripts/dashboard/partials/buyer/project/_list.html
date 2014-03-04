@@ -1,0 +1,37 @@
+<div class="page-title"> <i class="icon-file" style="margin-top: -4px;"></i>
+    <h3><span class="semi-bold">My Projects</span></h3>
+</div>
+<a ui-sref="buyer.new_project" type="button" class="btn btn-primary btn-cons pull-right" style="margin: -61px 0px;"><i class="icon-ok"></i>&nbsp;Start new project</a>
+<div class="row">
+    <div class="col-md-6" ng-repeat="(key, project) in projects">
+        <div class="row">
+            
+            <div class="col-md-12 sortable">
+                <div class="grid simple">
+                    <div class="grid-title no-border">
+                        <h4>
+                        <a ui-sref="buyer.view_project({id: project.slug})" class="muted">
+                        <i class="icon-time"></i> 
+                        posted on {{project.created_at | dateToISO | date:'MMM dd, yyyy @ h:mma'}}
+                        </a>
+                        </h4>
+                        <div class="tools"><a href class="config dropdown-toggle" data-toggle="dropdown"></a>
+                            <ul class="dropdown-menu">
+                                <li><a ui-sref="buyer.edit_project({id: project.id})" style="background:none;">&nbsp;<i class="icon-pencil"></i>&nbsp;Edit</a></li>
+                                <li><a ng-click="delete(project, key)" style="background:none;">&nbsp;<i class="icon-remove"></i>&nbsp;Delete</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="grid-body no-border">
+                        <div class="row-fluid">
+                            <div class="scroller" data-height="245px" data-always-visible="1">
+                                <h3><span class="semi-bold" ng-bind="project.title"></span></h3>
+                                <p ng-bind="project.description"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

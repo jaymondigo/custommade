@@ -108,7 +108,8 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Codesleeve\AssetPipeline\AssetPipelineServiceProvider',
 		'Fitztrev\LaravelHtmlMinify\LaravelHtmlMinifyServiceProvider',
-		'Artdarek\OAuth\OAuthServiceProvider',
+		'Codesleeve\Stapler\StaplerServiceProvider',		
+		'Artdarek\OAuth\OAuthServiceProvider', 
 	),
 
 	/*
@@ -174,7 +175,7 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
-		'OAuth' 		  => 'Artdarek\OAuth\Facade\OAuth',
+		'OAuth' 		  => 'Artdarek\OAuth\Facade\OAuth', 
 	),
 
 );

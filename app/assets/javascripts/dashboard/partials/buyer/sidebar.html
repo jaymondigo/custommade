@@ -1,0 +1,34 @@
+<!-- BEGIN MINI-PROFILE -->
+<div class="user-info-wrapper">
+    <div class="profile-wrapper">
+        <img src="assets/img/profiles/avatar.jpg"  alt="" data-src="assets/img/profiles/avatar.jpg" data-src-retina="assets/img/profiles/avatar2x.jpg" width="69" height="69" />
+    </div>
+    <div class="user-info" style="margin-top: 17px;">
+        <div class="username">Coby<span class="semi-bold"> Go</span></div>
+        <div class="status"><a href="edit_account.html"><i class="icon-user"></i>&nbsp;&nbsp;Edit Account</a></div>
+    </div>
+</div>
+<!-- END MINI-PROFILE -->
+<!-- BEGIN MINI-WIGETS -->
+<!-- END MINI-WIGETS -->
+<!-- BEGIN SIDEBAR MENU -->
+<p class="menu-title">REFRESH <span class="pull-right"><a href="javascript:;"><i class="icon-refresh"></i></a></span></p>
+<ul>
+    <li class="start" ng-repeat="(i, nav) in navs" ng-class="{'active': state.current.name==nav.state}">
+        <a ui-sref="{{nav.state}}">
+        <i ng-class="nav.icon"></i>
+        <span class="title" ng-bind="nav.label"></span>
+        </a>
+        <ul class="sub-nav" style="list-style:inherit;">
+            <li class="start" ng-repeat="(cI1, cNav1) in nav.childNavs" ng-class="{'active': state.current.name==cNav1.state}">
+                <a ui-sref="{{cNav1.state}}">
+                <i ng-class="cNav1.icon"></i>
+                <span class="title" ng-bind="cNav1.label"></span>
+                </a>
+
+            </li>
+        </ul>
+    </li>
+</ul>
+<a href="javascript:void(0)" class="scrollup">Scroll</a>
+<div class="clearfix"></div>

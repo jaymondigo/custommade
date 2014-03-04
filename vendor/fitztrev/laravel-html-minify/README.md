@@ -34,3 +34,12 @@ Optionally, you can choose to customize how the minifier functions for different
 ### Options
 
 - **`enabled`** - *boolean*, default **true**
+
+If you are using a javascript framework that conflicts with Blade's tags, you can change them.
+
+- **`blade.contentTags`** - *array*, default `{{` and `}}`
+- **`blade.escapedContentTags`** - *array*, default `{{{` and `}}}`
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/fitztrev/laravel-html-minify/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+

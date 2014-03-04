@@ -5,7 +5,21 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 use LaravelBook\Ardent\Ardent;
 
 class User extends Ardent implements UserInterface, RemindableInterface {
+    
+    use Codesleeve\Stapler\Stapler;
 
+    public function __construct(array $attributes = array()) {
+      $this->hasAttachedFile('avatar', [
+          'styles' => [
+            'medium' => '300x300',
+            'thumb' => '80x80'
+          ],
+          'default_url' => '/system/missing.jpg',
+          'keep_old_files' => true
+      ]);
+
+      parent::__construct($attributes);
+    } 
 	/**
 	 * The database table used by the model.
 	 *
@@ -23,6 +37,7 @@ class User extends Ardent implements UserInterface, RemindableInterface {
 	 */
 	protected $hidden = array('password');
 
+	protected $appends = array('full_name','avatar_url');
 	/**
 	 * Get the unique identifier for the user.
 	 *
@@ -31,23 +46,25 @@ class User extends Ardent implements UserInterface, RemindableInterface {
 
     public static $rules = array(
         'email'                 => 'required|email|unique:users',
-        'firstname'             => 'required|between:4,16',
-        'lastname'              => 'required|between:4,16',
-        'password'              => 'required',
-        'type'          => 'required'
+        'first_name'             => 'required|between:4,16',
+        'last_name'              => 'required|between:4,16',
+        'password'              => 'required', 
     );
-
-    public function accountType()
-    {
-        return $this->belongsTo('AccountType','type');
-    }
-    
-    public function medias(){
-    	return $this->hasMany('Media', 'owner');
+ 
+    public function projects(){
+    	return $this->hasMany('Project');
     }
 
-    public function profilePicture(){
-    	return $this->medias()->where('type','profile_picture');
+    public function getFullNameAttribute(){
+    	return $this->first_name.' '.$this->last_name;
+    }
+
+    public function getAvatarUrlAttribute(){
+      return array(
+                    'small'=>$this->avatar->url('thumb'),
+                    'medium'=>$this->avatar->url('medium'),
+                    'original'=>$this->avatar->url()
+                    );
     }
 
     public function beforeSave()
@@ -89,10 +106,10 @@ class User extends Ardent implements UserInterface, RemindableInterface {
 
     public function afterCreate()
     {
-        // send welcome email
-        MailHelper::signupMessage($this->firstname.' '.$this->lastname, $this->email, $this->rawPassword);
+        // // send welcome email
+        // MailHelper::signupMessage($this->firstname.' '.$this->lastname, $this->email, $this->rawPassword);
         //set message on first login
-        Session::flash('notice', 'Hello '.$this->firstname.'! You have successfully registered your account. Please confirm your email now.');
+        //Session::flash('notice', 'Hello '.$this->firstname.'! You have successfully registered your account. Please confirm your email now.');
     }
 
 }

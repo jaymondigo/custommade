@@ -11,19 +11,27 @@
 |
 */
 
-Route::get('/', array('as'=>'home', 'uses'=>'HomeController@getIndex'));
+Route::get('/', array('as'=>'public', 'uses'=>'PublicController@getIndex'));
 Route::get('login', array('as'=>'login_route', 'uses'=>'SessionController@getlogin'));
-Route::get('member', array('as'=>'member', 'uses'=>'DashboardController@getMember'));
 
-Route::controller('session', 'SessionController');
-Route::controller('register', 'RegisterController');
-Route::controller('home', 'HomeController');    
+Route::controller('session', 'SessionController'); 
+Route::get('signup', array('as'=>'signupRoute', 'uses'=>'SessionController@getSignup'));
+Route::controller('p', 'PublicController');    
+Route::get('search/raw-data', array('as'=>'search','uses'=>'DashboardController@search'));
+
 /* start apps routes =============================================== */
 
-Route::group(array('before' => 'auth'), function(){   
-		Route::controller('app', 'DashboardController');    
-		Route::controller('user', 'UserController');
+Route::group(array('before' => 'auth'), function(){    
+		Route::get('member', array('as'=>'member', 'uses'=>'DashboardController@getMember'));
+		Route::get('member/{uri1}', array('as'=>'member', 'uses'=>'DashboardController@getMember'));
+		Route::get('member/{uri1}/{uri2}', array('as'=>'member', 'uses'=>'DashboardController@getMember'));
+		Route::get('member/{uri1}/{uri2}/{uri3}', array('as'=>'member', 'uses'=>'DashboardController@getMember'));
+		Route::get('member/{uri1}/{uri2}/{uri3}/{uri4}', array('as'=>'member', 'uses'=>'DashboardController@getMember'));
 
+		Route::post('project/photo', array('uses'=>'ProjectController@photo'));
+		Route::post('project/photo/delete', array('uses'=>'ProjectController@deletePhoto'));
+		Route::resource('project', 'ProjectController');
+		Route::resource('user', 'UserController');
 });
 
 Route::any('fb-login', array('as'=>'fb_login','uses'=>'SessionController@loginWithFacebook'));

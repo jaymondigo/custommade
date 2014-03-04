@@ -460,7 +460,7 @@ abstract class Ardent extends Model {
 
         self::$externalValidator = true;
         self::$validationFactory = new ValidationFactory($translator);
-        self::$validationFactory->setPresenceVerifier(new DatabasePresenceVerifier($db->manager));
+        self::$validationFactory->setPresenceVerifier(new DatabasePresenceVerifier($db->getDatabaseManager()));
     }
 
     /**
@@ -531,7 +531,7 @@ abstract class Ardent extends Model {
 				$this->validationErrors = $validator->messages();
 
 				// stash the input to the current session
-				if (!self::$externalValidator && Input::hasSessionStore()) {
+				if (!self::$externalValidator && Input::hasSession()) {
 					Input::flash();
 				}
 			}

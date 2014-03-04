@@ -9,7 +9,15 @@
  * gets included (e.g. say you have require_tree . then the code will appear after all the directories 
  * but before any files alphabetically greater than 'application.css' 
  *
- *= require_tree ./lib/theme_venera/
+ *= require ./components/plugins-style/pace/pace-theme-flash
+ *= require ./components/plugins-style/boostrapv3/css/bootstrap
+ *= require ./components/plugins-style/boostrapv3/css/bootstrap-theme
+ *= require ./components/plugins-style/font-awesome/css/font-awesome
+ *= require ./components/theme-style/animate
+ *= require ./components/theme-style/style
+ *= require ./components/theme-style/responsive
+ *= require ./components/theme-style/custom-icon-set
  *= require_tree ./globals
  *= require_tree ./public
  */
+

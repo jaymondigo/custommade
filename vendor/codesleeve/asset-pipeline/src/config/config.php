@@ -32,8 +32,7 @@ return array(
 		'app/assets/javascripts',
 		'app/assets/stylesheets',
 		'lib/assets/fonts',
-		'lib/assets/images',
-		'app/assets/partials',
+		'lib/assets/images', 
 		'app/assets/templates',
 		'lib/assets/javascripts',
 		'lib/assets/stylesheets',
@@ -69,7 +68,7 @@ return array(
 		),
 		'.css' => array(
 			new Codesleeve\AssetPipeline\Filters\CssRewrite,
-			new Codesleeve\AssetPipeline\Filters\MinifyCSS('production')
+			//new Codesleeve\AssetPipeline\Filters\MinifyCSS('production')
 		),
 		'.js.coffee' => array(
 			new Codesleeve\AssetPipeline\Filters\CoffeeScriptFilter,
@@ -144,6 +143,6 @@ return array(
 	| set to 'production' but false otherwise
 	|
 	*/
-	'concat' => null
+	'concat' => array('local','production'),
 
 );

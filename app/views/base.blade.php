@@ -10,7 +10,7 @@
 	<meta content="" name="author" />
 	
 	@yield('head')
-	<base href="{{URL::to('/')}}"></base>
+	<base href="{{URL::to('/')}}" />
 </head>
 <body @yield('body_attr')>
 	@yield('body')

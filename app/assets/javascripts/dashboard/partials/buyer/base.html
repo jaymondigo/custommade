@@ -1,0 +1,95 @@
+<!-- BEGIN HEADER -->
+<div class="header navbar navbar-inverse ">
+    <!-- BEGIN TOP NAVIGATION BAR -->
+    <div class="navbar-inner">
+        <div class="header-seperation">
+            <ul class="nav pull-left notifcation-center" id="main-menu-toggle-wrapper" style="display:none">
+                <li class="dropdown"> <a id="main-menu-toggle" href="#main-menu"  class="" > <div class="iconset top-menu-toggle-white"></div> </a> </li>
+            </ul>
+            <!-- BEGIN LOGO -->
+            <a ui-sref="buyer.index"><img src="assets/img/logo.png" class="logo" alt=""  data-src="assets/img/logo.png" data-src-retina="assets/img/logo2x.png" width="106" height="21"/></a>
+            <!-- END LOGO -->
+        </div>
+        <!-- END RESPONSIVE MENU TOGGLER -->
+        <div class="header-quick-nav" >
+            <!-- BEGIN TOP NAVIGATION MENU -->
+            <div class="pull-left">
+                <ul class="nav quick-section">
+                    <li class="quicklinks"> <a href class="" id="layout-condensed-toggle" >
+                        <div class="iconset top-menu-toggle-dark"></div>
+                    </a> </li>
+                </ul>
+                <ul class="nav quick-section">
+                    <li class="m-r-10 input-prepend inside search-form no-boarder">
+                        <span class="add-on"> <span class="iconset top-search"></span></span>
+                        <form style="position: absolute; width:250px;" novalidate ng-submit="search(search_entry)">
+                        <input name="" type="text" ng-model="search_entry" name="search_entry" class="no-boarder " placeholder="Search Dashboard" style="width:250px;" > 
+                        </form>
+                    </li>
+                </ul>
+            </div>
+            <!-- END TOP NAVIGATION MENU -->
+            <!-- BEGIN CHAT TOGGLER -->
+            <div class="pull-right">
+                <div class="chat-toggler">
+                    <div class="btn-group"> <a class="dropdown-toggle btn-demo-space" data-toggle="dropdown" href style="width: 189px;">
+                        <div class="profile-pic">
+                            <img ng-src="{{currentUser.avatar_url.small}}"  alt="" data-src="{{currentUser.avatar_url.small}}" data-src-retina="{{currentUser.avatar_url.small}}" width="35" height="35" />
+                        </div>
+                        <div class="username" style="padding: 9px 6px;">
+                            <div class="iconset top-down-arrow" style="margin-top: 9px;"></div>
+                            <span ng-bind="currentUser.first_name"></span>
+                            <span class="bold" ng-bind="currentUser.last_name"></span>
+                        </div>  </a>
+                        <ul class="dropdown-menu">
+                            <li><a ui-sref="account" style="width: 96%;"><i class="icon-user"></i>&nbsp;Account</a></li>
+                            <li><a ui-sref="logout" style="width: 96%;"><i class="icon-off"></i>&nbsp;Logout</a></li> 
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- END CHAT TOGGLER -->
+        </div>
+        <!-- END TOP NAVIGATION MENU -->
+    </div>
+    <!-- END TOP NAVIGATION BAR -->
+</div>
+<!-- END HEADER -->
+<!-- BEGIN CONTAINER -->
+<div class="page-container row">
+    <!-- BEGIN SIDEBAR -->
+    <div class="page-sidebar" id="main-menu" ng-include="'sidebar-view'">
+        <!-- END SIDEBAR MENU -->
+    </div>
+    <!-- END SIDEBAR -->
+    <div class="footer-widget">
+        <div class="progress transparent progress-small no-radius no-margin">
+            <div class="progress-bar progress-bar-success animate-progress-bar" data-percentage="79%" style="width: 79%;"></div>
+        </div>
+        <div class="pull-right">
+            <div class="details-status">
+                <span class="animate-number" data-value="86" data-animation-duration="560">86</span>%
+            </div>
+        <a href="lockscreen.html"><i class="icon-off"></i></a></div>
+    </div>
+    <!-- END SIDEBAR -->
+    <!-- BEGIN PAGE CONTAINER-->
+    <div class="page-content">
+        <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+        <div id="portlet-config" class="modal hide">
+            <div class="modal-header">
+                <button data-dismiss="modal" class="close" type="button"></button>
+                <h3>Widget Settings</h3>
+            </div>
+            <div class="modal-body"> Widget settings form goes here </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="content">
+            <!-- START PAGE MAIN CONTENT -->
+            <div ui-view>
+            </div>
+            <!-- END PAGE MAIN CONTENT-->
+        </div>
+    </div>
+    <!-- END CONTAINER -->
+</div>

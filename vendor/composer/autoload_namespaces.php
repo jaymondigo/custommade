@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Zizaco\\Confide' => array($vendorDir . '/zizaco/confide/src'),
     'Whoops' => array($vendorDir . '/filp/whoops/src'),
     'Symfony\\Component\\Translation\\' => array($vendorDir . '/symfony/translation'),
     'Symfony\\Component\\Routing\\' => array($vendorDir . '/symfony/routing'),
@@ -29,7 +30,6 @@ return array(
     'OAuth' => array($vendorDir . '/lusitanian/oauth/src'),
     'Normalizer' => array($vendorDir . '/patchwork/utf8/class'),
     'Net' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
-    'Monolog' => array($vendorDir . '/monolog/monolog/src'),
     'Math' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
     'LaravelBook\\Ardent' => array($vendorDir . '/laravelbook/ardent/src'),
     'Jeremeamia\\SuperClosure' => array($vendorDir . '/jeremeamia/SuperClosure/src'),
