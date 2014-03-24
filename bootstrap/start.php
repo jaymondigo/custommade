@@ -28,7 +28,7 @@ $env = $app->detectEnvironment(array(
 
 	'local' => array('alenteria-PC', 'devf-ubuntu','fox', 'custommade.local','Arnel-DBS'),
 	'staging' => array('staging.custommade.com'),
-	'production' => array('custommade.com')
+	'production' => array('custommade.com','creativ2.elance.arvixe.com')
 
 ));
 

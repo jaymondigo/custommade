@@ -55,9 +55,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'custommade',
-			'username'  => 'root',
-			'password'  => '',
+			'database'  => 'creativ2_app',
+			'username'  => 'creativ2_arnel',
+			'password'  => 'asdf@123',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
