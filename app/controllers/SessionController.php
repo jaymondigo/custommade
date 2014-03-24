@@ -18,7 +18,7 @@ class SessionController extends BaseController {
 		$remember = Input::has('remember');
 		if(Auth::attempt( $user, $remember ))
 		{
-			return Redirect::intended('/');
+			return Redirect::intended('/member');
 		}
 		else
 		{
@@ -28,7 +28,7 @@ class SessionController extends BaseController {
 			);
 
 			if(Auth::attempt( $user, $remember ))
-				return Redirect::intended('/app');
+				return Redirect::intended('/member');
 			else
 				return View::make('public.login')->with('error', true);
 		} 
@@ -66,7 +66,7 @@ class SessionController extends BaseController {
 			// 	// $subs->save();
 			// }
 			Auth::login($user);
-			return Redirect::to('/');
+			return Redirect::to('/member');
 		}
 		else
 		{

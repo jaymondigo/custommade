@@ -17,6 +17,7 @@
 //= require ./components/plugins-js/angular/angular-ui-router
 //= require ./components/plugins-js/angular/angular-resource
 //= require ./components/plugins-js/angular/angular-sanitize
+//= require ./components/plugins-js/ui-bootstrap-tpls-0.10.0
 //
 //= require_tree ./dashboard/partials
 //= require ./dashboard/app 
@@ -24,6 +25,3 @@
 //= require ./dashboard/filters
 //= require ./dashboard/services
 //= require ./dashboard/controllers
-
-
- 

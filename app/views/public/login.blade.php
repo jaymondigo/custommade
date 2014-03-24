@@ -58,7 +58,7 @@
                 <div class="row">
                     <div class="control-group  col-md-10">
                         <div class="checkbox checkbox check-success"> <a href="#">Trouble login in?</a>&nbsp;&nbsp;
-                            <input type="checkbox" name="remember" id="checkbox1" value="1">
+                            <input type="checkbox" name="remember" id="checkbox1" checked="checked" value="1">
                             <label for="checkbox1">Keep me reminded </label>
                         </div>
                     </div>

@@ -1,4 +1,3 @@
-//= require ./components/plugins-js/bootstrap/js/bootstrap
 //= require ./components/plugins-js/breakpoints
 //= require ./components/plugins-js/jquery-unveil/jquery.unveil
 //= require ./components/plugins-js/pace/pace

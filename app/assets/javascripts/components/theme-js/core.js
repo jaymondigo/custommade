@@ -14,14 +14,14 @@ $(document).ready(function() {
                 dictRemoveFile: baseUrl+"/project/delete-photo"
             });
 
-    $('.has-instructions').popover({
-        html: true,
-        trigger: 'focus'
-    });
-    $('.radio-has-instructions').popover({
-        html: true,
-        trigger: 'hover'
-    });
+    // $('.has-instructions').popover({
+    //     html: true,
+    //     trigger: 'focus'
+    // });
+    // $('.radio-has-instructions').popover({
+    //     html: true,
+    //     trigger: 'hover'
+    // });
 
     $('.slider-element').slider();
     
@@ -75,12 +75,12 @@ $(document).ready(function() {
     $(document).on('focus', ".bootstrap-tagsinput input", function() {
         $(this).parent().addClass('input-focus');
     })
-    $('#my-task-list').popover({
-        html: true,
-        content: function() {
-            return $('#notification-list').html();
-        }
-    });
+    // $('#my-task-list').popover({
+    //     html: true,
+    //     content: function() {
+    //         return $('#notification-list').html();
+    //     }
+    // });
     //***********************************CHAT POPUP*****************************
     $('.chat-menu-toggle').sidr({
         name: 'sidr',

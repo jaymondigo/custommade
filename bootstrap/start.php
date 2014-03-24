@@ -26,7 +26,7 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 
-	'local' => array('alenteria-PC', 'devf-ubuntu','fox', 'custommade.local'),
+	'local' => array('alenteria-PC', 'devf-ubuntu','fox', 'custommade.local','Arnel-DBS'),
 	'staging' => array('staging.custommade.com'),
 	'production' => array('custommade.com')
 

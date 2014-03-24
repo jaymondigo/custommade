@@ -87,7 +87,7 @@
 			<li><a href="pricing.html">Blog</a></li>
 			<li ><a href="signup">Sign up</a></li>
 			<li ><a href="login">Login</a></li>
-			<li ><a href="#" class="btn btn-purple btn-lg  btn-large m-r-10" style="height: 43px;padding-left: 16px;padding-right: 16px;">Start your project</a></li>
+			<li ><a href="login" class="btn btn-purple btn-lg  btn-large m-r-10" style="height: 43px;padding-left: 16px;padding-right: 16px;">Start your project</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -132,9 +132,9 @@
 
 						style="z-index: 6;min-height: 60px;min-width: 400px;left: 685px;">
 
-								<input type = "text"  style="font-weight:normal !important;font-size:20px;min-height: 48px;min-width: 530px;color:#333333;" placeholder= "Search here"> <i class = "fa fa-search" style ="margin-left: -30px;margin-top: 15px;"> </i>
+								<input type = "text"  style="font-weight:normal !important;font-size:20px;min-height: 48px;min-width: 530px;color:#333333;line-height:24px;" placeholder= "Search here"> <i class = "fa fa-search" style ="margin-left: -30px;margin-top: 15px;"> </i>
 					</div>
-					<div class="tp-caption fade slider tp-resizeme slider"
+					<!-- <div class="tp-caption fade slider tp-resizeme slider"
 						data-x="center"
 						data-hoffset="0"
 						data-y="300"
@@ -144,8 +144,8 @@
 						data-endspeed="300"
 						data-endeasing="Power1.easeIn"
 						data-captionhidden="off"
-						style="z-index: 6">	<a href="#" class="text-white m-r-10">or subscribe to newsletter</a>
-					</div>
+						style="z-index: 6">	<a href="#" class="text-white m-r-10">Find</a>
+					</div> -->
 				</li>					
 				
 			

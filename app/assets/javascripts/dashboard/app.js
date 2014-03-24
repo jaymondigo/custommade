@@ -12,7 +12,7 @@ window.reloadScripts = function(src) {
     scriptElement.src = src;
     document.getElementsByTagName('head')[0].appendChild(scriptElement);
 }
-window.DashApp = angular.module('dash_app', ['ui.router', 'ngResource', 'ngSanitize']).config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
+window.DashApp = angular.module('dash_app', ['ui.router', 'ngResource', 'ngSanitize', 'ui.bootstrap']).config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
     function($stateProvider, $urlRouterProvider, $locationProvider) {
         $locationProvider.html5Mode(true);
         baseRoute = '/member/'
