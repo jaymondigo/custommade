@@ -31,7 +31,7 @@ class ProjectController extends \BaseController {
 	{ 	
 		$obj = new Project();
 		$obj->title = Input::get('title');
-		$obj->slug = createSlug($obj->title);
+		$obj->slug = FoxHelper::createSlug($obj->title);
 		$obj->description = Input::get('description');
 		$obj->has_dimension = Input::get('has_dimension');
 		$obj->has_budget = Input::get('has_budget');
@@ -76,7 +76,7 @@ class ProjectController extends \BaseController {
 	public function update($id)
 	{	
 		$inputs = Input::all();
-		$inputs['slug'] = createSlug($inputs['title']);
+		$inputs['slug'] = FoxHelper::createSlug($inputs['title']);
 
 		$obj = Project::find($id);
 		$obj->update($inputs);

@@ -58,8 +58,8 @@
 						  <ul class="nav navbar-nav navbar-right" >
 							<li ><a href="index.html">Home</a></li>
 							<li><a href="pricing.html">Blog</a></li>
-							<li ><a href="signup">Sign up</a></li>
-							<li ><a href="login">Login</a></li>
+							<li ><a href="user/register">Sign up</a></li>
+							<li ><a href="user/login">Login</a></li>
 						  </ul>
 						</div><!--/.nav-collapse -->
 					  </div>
@@ -85,9 +85,9 @@
           <ul class="nav navbar-nav navbar-right" >
 			<li ><a href="index.html">Home</a></li>
 			<li><a href="pricing.html">Blog</a></li>
-			<li ><a href="signup">Sign up</a></li>
-			<li ><a href="login">Login</a></li>
-			<li ><a href="login" class="btn btn-purple btn-lg  btn-large m-r-10" style="height: 43px;padding-left: 16px;padding-right: 16px;">Start your project</a></li>
+			<li ><a href="user/register">Sign up</a></li>
+			<li ><a href="user/login">Login</a></li>
+			<li ><a href="user/login" class="btn btn-purple btn-lg  btn-large m-r-10" style="height: 43px;padding-left: 16px;padding-right: 16px;">Start your project</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

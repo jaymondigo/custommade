@@ -109,7 +109,8 @@ return array(
 		'Codesleeve\AssetPipeline\AssetPipelineServiceProvider',
 		'Fitztrev\LaravelHtmlMinify\LaravelHtmlMinifyServiceProvider',
 		'Codesleeve\Stapler\StaplerServiceProvider',		
-		'Artdarek\OAuth\OAuthServiceProvider', 
+		'Artdarek\OAuth\OAuthServiceProvider', 		
+		'Zizaco\Confide\ConfideServiceProvider',
 	),
 
 	/*
@@ -176,6 +177,7 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
 		'OAuth' 		  => 'Artdarek\OAuth\Facade\OAuth', 
+		'Confide'    	  => 'Zizaco\Confide\ConfideFacade',
 	),
 
 );

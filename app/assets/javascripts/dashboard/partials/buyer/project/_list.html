@@ -9,18 +9,19 @@
             <div class="col-md-12 sortable">
                 <div class="grid simple">
                     <div class="grid-title no-border">
-                        <h4>
-                        <a ui-sref="buyer.view_project({id: project.slug})" class="muted">
-                        <i class="icon-time"></i> 
-                        posted on {{project.created_at | dateToISO | date:'MMM dd, yyyy @ h:mma'}}
-                        </a>
-                        </h4>
                         <div class="tools"><a href class="config dropdown-toggle" data-toggle="dropdown"></a>
                             <ul class="dropdown-menu">
                                 <li><a ui-sref="buyer.edit_project({id: project.id})" style="background:none;">&nbsp;<i class="icon-pencil"></i>&nbsp;Edit</a></li>
                                 <li><a ng-click="delete(project, key)" style="background:none;">&nbsp;<i class="icon-remove"></i>&nbsp;Delete</a></li>
                             </ul>
                         </div>
+                        <h4>
+                        <a ui-sref="buyer.view_project({id: project.slug})" class="muted">
+                        <i class="icon-time"></i> 
+                        posted on {{project.created_at | dateToISO | date:'MMM dd, yyyy @ h:mma'}}
+                        </a>
+                        </h4>
+                        
                     </div>
                     <div class="grid-body no-border">
                         <div class="row-fluid">
