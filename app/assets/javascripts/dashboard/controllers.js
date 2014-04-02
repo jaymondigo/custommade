@@ -42,8 +42,8 @@ DashApp
 
         }
     ])
-    .controller('IndexProfileCtrl', ['$scope', '$templateCache',
-        function($scope, $templateCache) {
+    .controller('IndexProfileCtrl', ['$scope', '$templateCache', '$modal',
+        function($scope, $templateCache, $modal) {
             $templateCache.put('sidebar-view', JST[path + 'buyer/sidebar']);
 
             //Date formats
@@ -51,11 +51,30 @@ DashApp
             $scope.format = $scope.formats[0];
             $scope.maxDate = new Date();
 
-            $scope.user = angular.copy($scope.currentUser);
-
-            $scope.editActive = false;
             $scope.edit = function() {
-                $scope.editActive = !$scope.editActive;
+                // $scope.editActive = !$scope.editActive; 
+                var modalInstance = $modal.open({
+                    template: JST[path + 'buyer/profile/_edit'],
+                    controller: 'EditProfileModalCtrl',
+                    resolve: {
+                        currentUser: function() {
+                            return $scope.currentUser;
+                        }
+                    }
+                });
+            }
+
+        }
+    ])
+    .controller('EditProfileModalCtrl', ['$scope', '$modalInstance', 'currentUser',
+        function($scope, $modalInstance, currentUser) {
+            $scope.user = angular.copy(currentUser);
+            $scope.cancel = function() {
+                $modalInstance.dismiss('cancel');
+            };
+            $scope.update = function() {
+                $scope.user.$update();
+                currentUser = $scope.user;
             }
         }
     ])

@@ -137,10 +137,18 @@ class UserController extends BaseController {
 
         $user->firstname = Input::get('firstname');
         $user->lastname = Input::get('lastname');
+        $user->birth_date = Input::get('birth_date');
+        $user->address1 = Input::get('address1');
+        $user->address2 = Input::get('address2');
+        $user->address3 = Input::get('address3');
+        $user->website = Input::get('website');
         $user->email = Input::get('email');
         $user->updateUniques();
 
-        return $user->errors()->all(':message');
+        if(count($user->errors()->all(':message'))<=0)
+            return array('success'=>true);
+        else
+            return array('success'=>false, 'errors'=>$user->errors()->all(':message'));
     }
 
     public function postUpdatePassword(){

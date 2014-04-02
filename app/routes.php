@@ -41,6 +41,7 @@ Route::group(array('before' => 'auth'), function(){
 		Route::post('project/photo/delete', array('uses'=>'ProjectController@deletePhoto'));
 		Route::resource('project', 'ProjectController');
 		Route::controller('user', 'UserController');
+		Route::put('user',array('uses'=>'UserController@postUpdateInfo'));
 });
 
 Route::any('fb-login', array('as'=>'fb_login','uses'=>'SessionController@loginWithFacebook'));
