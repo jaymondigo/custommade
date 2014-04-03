@@ -12,7 +12,7 @@
 <!-- BEGIN MINI-WIGETS -->
 <!-- END MINI-WIGETS -->
 <!-- BEGIN SIDEBAR MENU -->
-<p class="menu-title">REFRESH <span class="pull-right"><a href="javascript:;"><i class="icon-refresh"></i></a></span></p>
+<p class="menu-title">REFRESH <span class="pull-right"><a href="javascript:window.location.reload();"><i class="icon-refresh"></i></a></span></p>
 <ul>
     <li class="start" ng-repeat="(i, nav) in navs" ng-class="{'active': state.current.name==nav.state}">
         <a ui-sref="{{nav.state}}">

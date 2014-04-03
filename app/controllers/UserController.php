@@ -137,20 +137,37 @@ class UserController extends BaseController {
 
         $user->firstname = Input::get('firstname');
         $user->lastname = Input::get('lastname');
+        $user->title = Input::get('title');
         $user->birth_date = Input::get('birth_date');
         $user->address1 = Input::get('address1');
         $user->address2 = Input::get('address2');
         $user->address3 = Input::get('address3');
+        $user->country = Input::get('country');
         $user->website = Input::get('website');
         $user->email = Input::get('email');
+
+        $password = Input::get('password');
+        $password_confirm = Input::get('password_confirmation');
+
+        if(!empty($password)||!empty($password_confirm)){
+            $user->password =  $password;
+            $user->password_confirmation = $password_confirm; 
+        }
+        
         $user->updateUniques();
 
         if(count($user->errors()->all(':message'))<=0)
             return array('success'=>true);
         else
             return array('success'=>false, 'errors'=>$user->errors()->all(':message'));
+    } 
+    public function postVerifyPassword(){
+        $user = Auth::user();
+        if(Hash::check(Input::get('password'), $user->password)) 
+            return array('verified'=> true);
+        else
+            return array('verified'=> false);
     }
-
     public function postUpdatePassword(){
         $user = Auth::user();
         if(!Hash::check(Input::get('old_password'), $user->password)) 
@@ -425,6 +442,11 @@ class UserController extends BaseController {
 	}
 
     public function getMe(){
-        return Auth::user();
+        $me = User::find(Auth::user()->id); 
+        $me->getAddress();
+        $me->getFullname();
+        $me->getProjectsCount();
+        $me->getAvatarUrl();
+        return $me;
     }
 }

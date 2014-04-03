@@ -32,14 +32,13 @@ class User extends ConfideUser {
      */
     protected $table = 'users';
     private $numProjects;
-
-    protected $appends = array('fullname','address','projects_count');
+ 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = array('password');
+    protected $hidden = array('password','confirmation_code','deleted_at','confirmed');
 
     /**
      * Get the unique identifier for the user.
@@ -71,15 +70,22 @@ class User extends ConfideUser {
         return $this->email;
     }
 
-    public function getFullnameAttribute(){
-        return $this->firstname.' '.$this->lastname;
+    public function getFullname(){
+        $this->fullname = $this->firstname.' '.$this->lastname;
     }
 
-    public function getAddressAttribute(){
-        return $this->address1.(!empty($this->address1) ? ', ':'').$this->address2.(!empty($this->address2) ? ', ':'').$this->address3.(!empty($this->address3) ? ', ':'').$this->country;
+    public function getAddress(){
+        $this->address = $this->address1.(!empty($this->address1) ? ', ':'').$this->address2.(!empty($this->address2) ? ', ':'').$this->address3.(!empty($this->address3) ? ', ':'').$this->country;
     }
-    public function getProjectsCountAttribute(){
-        return count(Project::where('user_id', Auth::user()->id));
+    public function getProjectsCount(){
+        $this->projects_count = count(Project::where('user_id', Auth::user()->id));
+    }
+    public function getAvatarUrl(){
+        $this->avatar_url = array(
+                'thumb'=>$this->avatar->url('thumb'),
+                'medium'=>$this->avatar->url('medium'),
+                'original'=>$this->avatar->url(),
+            );
     }
 }
     

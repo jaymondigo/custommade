@@ -1,12 +1,13 @@
-DashApp.factory('Project', ['$resource',
-    function($resource) {
-        return $resource(baseUrl + '/project/:id', null, {
-            'update': {
-                method: 'PUT'
-            }
-        });
-    }
-])
+DashApp
+    .factory('Project', ['$resource',
+        function($resource) {
+            return $resource(baseUrl + '/project/:id', null, {
+                'update': {
+                    method: 'PUT'
+                }
+            });
+        }
+    ])
     .factory('User', ['$resource',
         function($resource) {
             return $resource(baseUrl + '/user/:id', null, {

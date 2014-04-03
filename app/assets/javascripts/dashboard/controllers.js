@@ -40,6 +40,19 @@ DashApp
                 $location.path('member/search/q/' + entry);
             }
 
+            $scope.alerts = [];
+
+            $scope.addAlert = function(obj) {
+                $scope.alerts.push({
+                    msg: obj.msg,
+                    type: obj.type
+                });
+            };
+
+            $scope.closeAlert = function(index) {
+                $scope.alerts.splice(index, 1);
+            };
+
         }
     ])
     .controller('IndexProfileCtrl', ['$scope', '$templateCache', '$modal',
@@ -66,15 +79,43 @@ DashApp
 
         }
     ])
-    .controller('EditProfileModalCtrl', ['$scope', '$modalInstance', 'currentUser',
-        function($scope, $modalInstance, currentUser) {
+    .controller('EditProfileModalCtrl', ['$scope', '$modalInstance', 'currentUser', '$modal',
+        function($scope, $modalInstance, currentUser, $modal) {
             $scope.user = angular.copy(currentUser);
+
             $scope.cancel = function() {
                 $modalInstance.dismiss('cancel');
             };
             $scope.update = function() {
-                $scope.user.$update();
-                currentUser = $scope.user;
+                $modalInstance.dismiss('cancel');
+                var user = $scope.user;
+                var modalConfirmInstance = $modal.open({
+                    template: JST[path + 'buyer/profile/_password_confirm'],
+                    backdrop: 'static',
+                    controller: function($scope, $http) {
+                        $scope.verified = false;
+                        $scope.cancel = function() {
+                            modalConfirmInstance.dismiss('cancel');
+                        }
+                        $scope.verify_password = function(orig_password) {
+                            $http.post('user/verify-password', {
+                                password: orig_password
+                            }).success(function(data) {
+                                if (data.verified) {
+                                    user.$update();
+                                    modalConfirmInstance.dismiss('cancel');
+                                } else {
+                                    $scope.verify_message = 'Password don\'t match';
+                                    $('[name="orig_password"]').focus();
+                                }
+
+
+                            }).error(function(verified) {
+                                console.log(data);
+                            });
+                        }
+                    }
+                });
             }
         }
     ])
