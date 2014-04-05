@@ -88,12 +88,13 @@ DashApp
             };
             $scope.update = function() {
                 $modalInstance.dismiss('cancel');
+                $scope.currentUser = currentUser;
                 var user = $scope.user;
                 var modalConfirmInstance = $modal.open({
                     template: JST[path + 'buyer/profile/_password_confirm'],
                     backdrop: 'static',
                     controller: function($scope, $http) {
-                        $scope.verified = false;
+                        $scope.verified = true;
                         $scope.cancel = function() {
                             modalConfirmInstance.dismiss('cancel');
                         }
@@ -105,8 +106,7 @@ DashApp
                                     user.$update();
                                     modalConfirmInstance.dismiss('cancel');
                                 } else {
-                                    $scope.verify_message = 'Password don\'t match';
-                                    $('[name="orig_password"]').focus();
+                                    $scope.verified = false;
                                 }
 
 

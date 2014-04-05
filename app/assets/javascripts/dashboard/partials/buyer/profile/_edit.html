@@ -25,10 +25,10 @@
 				<input type="password" name="password_confirm" ng-model="user.password_confirm" class="form-control">
 				<br/>
 				<label>Firstname</label>
-				<input ng-required="true" type="text" required name="firstname" ng-model="user.firstname" class="form-control">
+				<input ng-required="true" max-length="12" type="text" required name="firstname" ng-model="user.firstname" class="form-control">
 				<br/>
 				<label>Lastname</label>
-				<input ng-required="true" type="text"  required name="lastname" ng-model="user.lastname" class="form-control">
+				<input ng-required="true" type="text" max-length="15" required name="lastname" ng-model="user.lastname" class="form-control">
 				<br/>
 				<label>Your Job (Title)</label>
 				<input ng-required="true" type="text" required name="title" ng-model="user.title" class="form-control">
