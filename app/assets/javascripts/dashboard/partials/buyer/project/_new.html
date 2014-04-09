@@ -5,7 +5,7 @@
         </div>
         <div class="grid-body no-border "> <br>
             <div class="alert alert-info">
-                <button class="close" data-dismiss="alert"></button>
+                <button class="close" data-dismiss="alert" onclick="$(this).parent().remove();"></button>
                 Your project post is published to the job board where it's viewed by our makers. Be sure to     update your post whenever new decisions are made.
             </div>
             <form id="form_iconic_validation" name="form" ng-submit="create(project)" novalidate="novalidate">
@@ -87,7 +87,7 @@
                     </div>
                     <div class="form-actions" style="margin-top: 125px;">
                         <div class="pull-right">
-                            <button type="submit" class="btn btn-warning btn-cons" ng-click="saveDraft(project)"><i class="icon-book"></i> Save as draft</button>
+                            <button type="button" class="btn btn-warning btn-cons" ng-click="saveDraft(project)"><i class="icon-book"></i> Save as draft</button>
                             <button type="submit" ng-disabled="form.$invalid" class="btn btn-success btn-cons"><i class="icon-ok"></i> Preview</button>
                             <a ui-sref="buyer.projects" class="btn btn-white btn-cons">Cancel</a>
                         </div>

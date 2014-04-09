@@ -20,8 +20,8 @@ class User extends ConfideUser {
     public static $rules = array(
         'firstname' => 'required',
         'lastname' => 'required',
-        'username' => 'required|alpha_dash|unique:users',
-        'email' => 'required|email|unique:users',
+        'username' => 'required|unique:users',
+       // 'email' => 'required|email|unique:users',
         'password' => 'required|between:4,11|confirmed', 
     );
 

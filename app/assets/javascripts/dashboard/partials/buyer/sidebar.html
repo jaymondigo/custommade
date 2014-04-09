@@ -1,11 +1,11 @@
 <!-- BEGIN MINI-PROFILE -->
 <div class="user-info-wrapper">
     <div class="profile-wrapper">
-        <img src="assets/img/profiles/avatar.jpg"  alt="" data-src="assets/img/profiles/avatar.jpg" data-src-retina="assets/img/profiles/avatar2x.jpg" width="69" height="69" />
+        <img class="avatar" ng-src="{{currentUser.avatar_url['thumb']}}"   alt="" data-src="{{currentUser.avatar_url['thumb']}}" data-src-retina="{{currentUser.avatar_url['thumb']}}" width="69" height="69" />
     </div>
     <div class="user-info" style="margin-top: 17px;">
-        <div class="username">Coby<span class="semi-bold"> Go</span></div>
-        <div class="status"><a href="edit_account.html"><i class="icon-user"></i>&nbsp;&nbsp;Edit Account</a></div>
+        <div class="username">{{currentUser.firstname}}<span class="semi-bold"> {{currentUser.lastname}}</span></div>
+        <div class="status"><a ui-sref="buyer.profile"><i class="icon-user"></i>&nbsp;&nbsp;Edit Account</a></div>
     </div>
 </div>
 <!-- END MINI-PROFILE -->

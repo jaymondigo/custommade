@@ -9,7 +9,7 @@ class ProjectController extends \BaseController {
 	 */
 	public function index()
 	{
-		return Project::all();
+		return Project::where('user_id', Auth::user()->id)->get();
 	}
 
 	/**
@@ -29,7 +29,10 @@ class ProjectController extends \BaseController {
 	 */
 	public function store()
 	{ 	
+		$type = Input::get('type');
+
 		$obj = new Project();
+		$obj->user_id = Auth::user()->id;
 		$obj->title = Input::get('title');
 		$obj->slug = FoxHelper::createSlug($obj->title);
 		$obj->description = Input::get('description');
@@ -37,6 +40,7 @@ class ProjectController extends \BaseController {
 		$obj->has_budget = Input::get('has_budget');
 		$obj->dimension = Input::get('dimension');
 		$obj->budget = Input::get('budget');
+		$obj->type = $type !='' ? $type : 'published';
 		$obj->save();
 		return $obj;
 	}
@@ -75,10 +79,13 @@ class ProjectController extends \BaseController {
 	 */
 	public function update($id)
 	{	
+		$type = Input::get('type');
+
 		$inputs = Input::all();
 		$inputs['slug'] = FoxHelper::createSlug($inputs['title']);
-
+		$inputs['type'] = $type !='' ? $type : 'published'; 
 		$obj = Project::find($id);
+
 		$obj->update($inputs);
 		return $obj;
 	}

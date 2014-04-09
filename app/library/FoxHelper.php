@@ -44,6 +44,6 @@ class FoxHelper{
 			$ret .= $A_Z[rand(0,strlen($A_Z) - 1)];
 		}
 		return $ret;
-	}
+	} 
 	        
 }

@@ -58,8 +58,8 @@ class UserController extends BaseController {
             $error = $user->errors()->all(':message');
 
             return Redirect::action('UserController@create')
-                            ->withInput(Input::except('password'))
-                ->with( 'error', $error );
+                            ->withInput(Input::except(array('password','confirm_password')))
+                            ->with( 'error', $error );
         }
     }
 
@@ -147,7 +147,7 @@ class UserController extends BaseController {
         $user->email = Input::get('email');
 
         $password = Input::get('password');
-        $password_confirm = Input::get('password_confirmation');
+        $password_confirm = Input::get('password_confirm');
 
         if(!empty($password)||!empty($password_confirm)){
             $user->password =  $password;
@@ -157,13 +157,29 @@ class UserController extends BaseController {
         $user->updateUniques();
 
         if(count($user->errors()->all(':message'))<=0)
-            return array('success'=>true);
+            return array('alert'=>array('type'=>'success', 'message'=>'Account successfully updated!'));
         else
-            return array('success'=>false, 'errors'=>$user->errors()->all(':message'));
+            return array('alert'=>array('type'=>'error', 'message'=>$user->errors()->all(':message')));
     } 
     public function postVerifyPassword(){
         $user = Auth::user();
-        if(Hash::check(Input::get('password'), $user->password)) 
+        if(Hash::check(Input::get('params'), $user->password)) 
+            return array('verified'=> true);
+        else
+            return array('verified'=> false);
+    }
+
+    public function postVerifyFbId(){
+        $user = Auth::user();
+        if($user->fb_id == Input::get('params')) 
+            return array('verified'=> true);
+        else
+            return array('verified'=> false);
+    }
+
+    public function postVerifyGoogleId(){
+        $user = Auth::user();
+        if($user->google_id == Input::get('params')) 
             return array('verified'=> true);
         else
             return array('verified'=> false);
@@ -187,15 +203,14 @@ class UserController extends BaseController {
     }
 
     public function postUploadAvatar(){
-        $user = User::find(Input::get('id'));
+        $user = User::find(Auth::user()->id);
         if(!is_object($user))
-            return Redirect::back();
+            return array('alert'=>array('type'=>'error', 'message'=>'Error uploading avatar<br/>Please try again!'));
 
         $user->avatar = Input::file('avatar');
-        $user->updateUniques();
-
-        return Redirect::back()
-                        ->with('avatar_errors',$user->errors()->all(':message'));
+        $user->updateUniques(); 
+        return $user->avatar->url('thumb');
+        // return array('alert'=>array('type'=>'success', 'message'=>'Your avatar was successfully updated!'));
     }
     /**
      * Attempt to confirm account with code
@@ -330,13 +345,13 @@ class UserController extends BaseController {
 	        // $message = 'Your unique facebook user id is: ' . $result['id'] . ' and your name is ' . $result['name'];
 	        // echo $message. "<br/>";
 	        $id = $result['id'];
-	        $first_name = $result['first_name'];
-	        $last_name = $result['last_name'];
-	        $site = 'fb';
-	        $data = $result;
-	        $email = $result['email'];
-
-		    self::socialMediaLogin($email, $first_name, $last_name, $id, $site, $data);
+	        $first_name = isset($result['first_name'])?$result['first_name']:'';
+	        $last_name = isset($result['last_name']) ? $result['last_name'] : '';
+	        $site = 'fb'; 
+	        $email = isset($result['email']) ? $result['email'] : '';
+            
+            $data = $result;
+		    return self::socialMediaLogin($email, $first_name, $last_name, $id, $site, $data);
 		    //Var_dump
 	        //display whole array().
 	       // dd($result);
@@ -348,6 +363,7 @@ class UserController extends BaseController {
 	        $url = $fb->getAuthorizationUri(); 
 	        // return to facebook login url
 	        //return Response::make()->header( 'Location', (string)$url);
+
 	        return Redirect::to(htmlspecialchars_decode($url));
 	    }
 
@@ -371,13 +387,16 @@ class UserController extends BaseController {
 
 	        // Send a request with it
 	        $result = json_decode( $googleService->request( 'https://www.googleapis.com/oauth2/v1/userinfo' ), true );
+ 
 
-	        $message = 'Your unique Google user id is: ' . $result['id'] . ' and your name is ' . $result['name'];
-	        echo $message. "<br/>";
-
-	        //Var_dump
-	        //display whole array().
-	        dd($result);
+	        $id = $result['id'];
+            $first_name = isset($result['given_name'])?$result['given_name']:'';
+            $last_name = isset($result['family_name']) ? $result['family_name'] : '';
+            $site = 'google'; 
+            $email = isset($result['email']) ? $result['email'] : '';
+            
+            $data = $result; 
+            return self::socialMediaLogin($email, $first_name, $last_name, $id, $site, $data);
 
 	    }
 	    // if not ask for permission first
@@ -392,53 +411,66 @@ class UserController extends BaseController {
 	}
 
 	public static function socialMediaLogin($email, $first_name, $last_name, $id, $site, $data){
-		
+		$newUser = false; 
 		if($site=='fb'){
-			$user = User::where('fb_id','=',$id)->limit(1)->get();
+			$user = User::where('fb_id', $id)->first(); 
 
 		}else if($site=='google'){
-			$user = User::where('google_id','=',$id)->limit(1)->get();
+			$user = User::where('google_id',$id)->first();
 		}
 
 
 
-		if(isset($user[0]))
-			$user = $user[0]; 
-		else{			
-			$user = User::where('email','=', $email)->limit(1)->get();
+		if(!$user){
+		    $user = User::where('email', $email)->first();
 
-			if(!isset($user[0])){
-				$user = new User();
-			}else
-				$user = $user[0];
+			if(!$user){
+				$user = new User();		
+                $newUser = true;
+            }	 
 		}
 
-		if($site=='fb')
+		if($site=='fb'){
 			$user->fb_id = $id;
-		else if($site=='google')
+        }
+		else if($site=='google'){
 			$user->google_id = $id;
+            $user->avatar = $data['picture'];
+        }
 
-		$user->first_name = $first_name;
-		$user->last_name = $last_name;
+		$user->firstname = $first_name;
+		$user->lastname = $last_name;
 		$user->email = $email;
-		$user->password = time();
+		
 		$user->is_buyer = true;
 
 		$matches = explode("@", $user->email);
-		$user->username = $matches[0];
+		$user->username = isset($matches[0]) && $matches[0] !='' ? $matches[0] : (isset($data['username']) ? $data['username'] : (strtolower(str_replace(' ', '_', $first_name))));
+        
+        $random = '';
+        if($newUser)
+        {   
+            $random = FoxHelper::genRandomPassword();
+            $user->password = $random;
+            $user->password_confirmation = $random;
+            $user->confirmed = true;
+        }
 
-		if($user->save())
-		{
-			echo "new user";
-	        
-			Auth::login($user);
-			echo Redirect::to('/member');
-		}else{ 
+        if($user->email=='')
+            $user->email = 'arnel.lenteria@gmail.com';
 
+		if($newUser && $user->save())
+		{   
+            Auth::login($user);
+			return Redirect::to('member')
+                            ->with('alert', array('type'=>'alert', 'message'=>"You're account has been successfully created<br/>This is your generated password: <b>".$random."</b><br/>Please go change it now <a href='".URL::to('member/buyer/profile')."'>Profile Settings</a>"));
+		}else{  
+            // return $user->validationErrors;
 			$user->updateUniques();
 			Auth::login($user);
-			echo Redirect::to('/member');
+			return Redirect::to('member');
 		}
+
 	}
 
     public function getMe(){

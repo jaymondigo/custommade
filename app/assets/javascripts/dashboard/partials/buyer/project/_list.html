@@ -3,6 +3,7 @@
 </div>
 <a ui-sref="buyer.new_project" type="button" class="btn btn-primary btn-cons pull-right" style="margin: -61px 0px;"><i class="icon-ok"></i>&nbsp;Start new project</a>
 <div class="row">
+    <h4 class="col-md-6" ng-show="projects.length <=0">You have no project ...</h4>
     <div class="col-md-6" ng-repeat="(key, project) in projects">
         <div class="row">
             

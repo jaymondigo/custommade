@@ -3,16 +3,16 @@ $(document).ready(function() {
     calculateHeight();
 
     if (typeof Dropzone != 'undefined')
-                Dropzone.autoDiscover = false;
+        Dropzone.autoDiscover = false;
 
     id = $('.dropzone').data('id');
     $('.dropzone').dropzone({
-                url: baseUrl+"/project/photo?id="+id,
-                paramName: 'photo',
-                clickable: true,
-                addRemoveLinks: true,
-                dictRemoveFile: baseUrl+"/project/delete-photo"
-            });
+        url: baseUrl + "/project/photo?id=" + id,
+        paramName: 'photo',
+        clickable: true,
+        addRemoveLinks: true,
+        dictRemoveFile: baseUrl + "/project/delete-photo"
+    });
 
     // $('.has-instructions').popover({
     //     html: true,
@@ -24,7 +24,7 @@ $(document).ready(function() {
     // });
 
     $('.slider-element').slider();
-    
+
     $(document).on('click', '.remove-widget', function() {
         $(this).parent().parent().parent().addClass('animated fadeOut');
         $(this).parent().parent().parent().attr('id', 'id_a');
@@ -389,5 +389,8 @@ function calculateHeight() {
     }
 }
 
+$(document).on('click', 'close.button', function() {
+    $(this).parent().parent().hide();
+});
 
 //Code by #####Arnel T. Lenteria######

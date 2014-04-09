@@ -98,4 +98,21 @@ window.DashApp = angular.module('dash_app', ['ui.router', 'ngResource', 'ngSanit
                     controller: 'SearchCtrl'
                 })
         }
-    ]);
+    ])
+    .config(function($httpProvider) {
+        //add a transformRequest to preprocess request
+        $httpProvider.defaults.transformResponse.push(function(res) {
+            //resolving $rootScope manually since it's not possible to resolve instances in config blocks
+            if (typeof res.alert != 'undefined') {
+                $('notification').attr('type', res.alert.type);
+                $('notification .message-description').html(res.alert.message);
+
+                $('notification').show();
+                setTimeout(function() {
+                    $('notification').hide();
+                }, 5000);
+
+            } else
+                return res;
+        });
+    });

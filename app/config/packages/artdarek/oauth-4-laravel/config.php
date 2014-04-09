@@ -28,8 +28,8 @@ return array(
         ),		
 
         'Google' => array(
-		    'client_id'     => '380222797157-umphsddkl23s7ihgrtva6tiqn7d9cjd1.apps.googleusercontent.com',
-		    'client_secret' => '8hRlh1H9mzXd99d3b_r6HW5O',
+		    'client_id'     => '157114228151-knu6s4sj30l30gg7h98a5bdign842052.apps.googleusercontent.com',
+		    'client_secret' => 'zTtos-7KiNgS7QPNr_12DE1L',
 		    'scope'         => array('userinfo_email', 'userinfo_profile'),
 		),  
 

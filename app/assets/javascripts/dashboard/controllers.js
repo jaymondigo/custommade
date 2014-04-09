@@ -1,9 +1,12 @@
 DashApp
-    .controller('mainCtrl', ['$scope', '$state', 'User', '$location',
-        function($scope, $state, User, $location) {
+    .controller('mainCtrl', ['$scope', '$state', 'User', '$location', '$templateCache',
+        function($scope, $state, User, $location, $templateCache) {
             $scope.$on('$locationChangeStart', function(scope, next, current) {
                 reloadScripts($('base').attr('href') + '/assets/plugin.js');
             });
+
+            $templateCache.put('sidebar-view', JST[path + 'buyer/sidebar']);
+
             $scope.state = $state;
             $scope.navs = {
                 activites: {
@@ -42,17 +45,6 @@ DashApp
 
             $scope.alerts = [];
 
-            $scope.addAlert = function(obj) {
-                $scope.alerts.push({
-                    msg: obj.msg,
-                    type: obj.type
-                });
-            };
-
-            $scope.closeAlert = function(index) {
-                $scope.alerts.splice(index, 1);
-            };
-
         }
     ])
     .controller('IndexProfileCtrl', ['$scope', '$templateCache', '$modal',
@@ -79,28 +71,59 @@ DashApp
 
         }
     ])
-    .controller('EditProfileModalCtrl', ['$scope', '$modalInstance', 'currentUser', '$modal',
-        function($scope, $modalInstance, currentUser, $modal) {
+    .controller('EditProfileModalCtrl', ['$scope', '$modalInstance', 'currentUser', '$modal', '$http',
+        function($scope, $modalInstance, currentUser, $modal, $http) {
             $scope.user = angular.copy(currentUser);
 
             $scope.cancel = function() {
                 $modalInstance.dismiss('cancel');
             };
+
+            $scope.changeAvatar = function(ds) {
+                var fd = new FormData();
+                //Take the first selected file
+                fd.append("avatar", ds.files[0]);
+
+                $http.post('/user/upload-avatar', fd, {
+                    withCredentials: true,
+                    headers: {
+                        'Content-Type': undefined
+                    },
+                    transformRequest: angular.identity
+                }).success(function(url) {
+                    currentUser.avatar_url['thumb'] = url;
+                    $('img.avatar').attr('src', url);
+                });
+            }
+
             $scope.update = function() {
                 $modalInstance.dismiss('cancel');
                 $scope.currentUser = currentUser;
                 var user = $scope.user;
+
                 var modalConfirmInstance = $modal.open({
-                    template: JST[path + 'buyer/profile/_password_confirm'],
+                    template: JST[path + 'buyer/profile/_confirm'],
                     backdrop: 'static',
                     controller: function($scope, $http) {
                         $scope.verified = true;
+
+                        // if (user.fb_id != '')
+                        //     confirmation = 'fb-id';
+                        // else if (user.google_id != '')
+                        //     confirmation = 'google-id';
+                        // else
+                        confirmation = 'password';
+
+                        $scope.confirmation = confirmation.replace('-', ' ');
+                        $scope.confirm_message = 'Please verify your ' + $scope.confirmation + ' to continue';
+
+
                         $scope.cancel = function() {
                             modalConfirmInstance.dismiss('cancel');
                         }
-                        $scope.verify_password = function(orig_password) {
-                            $http.post('user/verify-password', {
-                                password: orig_password
+                        $scope.verify_password = function(params) {
+                            $http.post('user/verify-' + confirmation, {
+                                params: params
                             }).success(function(data) {
                                 if (data.verified) {
                                     user.$update();
@@ -155,7 +178,7 @@ DashApp
             $scope.hasPhotos = false;
 
             $scope.create = function(project) {
-                project.type = 'draft';
+                project.type = 'published';
                 project.$save(function(data) {
                     $location.path(baseRoute + 'buyer/preview-project/' + data.id)
                 });
@@ -169,6 +192,34 @@ DashApp
             }
         }
     ])
+    .controller('EditProjectCtrl', ['$scope', '$templateCache', '$location', 'Project', '$stateParams',
+        function($scope, $templateCache, $location, Project, $stateParams) {
+
+            $scope.project = Project.get({
+                id: $stateParams.id
+            });
+
+            $scope.hasPhotos = false;
+
+            $scope.update = function(project) {
+                project.type = 'published';
+                project.$update({
+                    id: $scope.project.id
+                }, function(data) {
+                    $location.path(baseRoute + 'buyer/preview-project/' + data.id)
+                });
+            }
+
+            $scope.saveDraft = function(project) {
+                project.type = 'draft';
+                project.$update({
+                    id: $scope.project.id
+                }, function(data) {
+                    $location.path(baseRoute + 'buyer/projects');
+                });
+            }
+        }
+    ])
     .controller('PreviewProjectCtrl', ['$scope', '$location', 'Project', '$stateParams',
         function($scope, $location, Project, $stateParams) {
             id = $stateParams.id;
@@ -177,10 +228,9 @@ DashApp
             });
 
             $scope.publish = function(project) {
-                project.type = 'published';
-                Project.update({
+                project.$update({
                     id: project.id
-                }, project, function(data) {
+                }, function(data) {
                     $location.path(baseRoute + 'buyer/projects');
                 });
             }

@@ -37,3 +37,35 @@
 .tooltip-inner{
     text-align: left !important;
 }
+close.button{
+    float: right;
+    margin-right: -7px;
+    color: #FFF;
+    background: #808080;
+    border-radius: 100%;
+    width: 13px;
+    height: 13px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 10px;
+    cursor: pointer;
+}
+close.button:hover{
+    background: #B87575;
+}
+
+notification{
+    background: #FFFCEE !important;
+}
+ 
+notification[type='success'] .notification-messages{
+    background: #C3FCC1;
+    color: #008000;
+}
+notification[type='error'] .notification-messages{
+    background: #FFD8D8;
+    color: #F00;
+}
+notification .message-description{
+    font-size: 15px;
+}

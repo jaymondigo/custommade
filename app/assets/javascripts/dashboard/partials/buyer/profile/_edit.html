@@ -11,8 +11,8 @@
 			<form name="user_profile">
 
 				<label>Avatar</label>
-				<img ng-src="{{user.avatar_url['original']}}" style="width: 200px;border: 1px solid #DBB9B9;margin-bottom: 10px;border-radius: 5px;" id="avatar-edit">
-				<input type="file" name="avatar" />
+				<img class='avatar' ng-src="{{user.avatar_url['original']}}" style="width: 200px;border: 1px solid #DBB9B9;margin-bottom: 10px;border-radius: 5px;" id="avatar-edit">
+				<input type="file" name="avatar" onchange="angular.element(this).scope().changeAvatar(this)" />
 				<br/>
 				<label>Username</label>
 				<input type="text" disabled ng-value="user.username" class="form-control">

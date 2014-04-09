@@ -1,7 +1,7 @@
 <?php
 class Project extends Eloquent {
 
-	protected $fillable = array('title', 'description', 'has_dimension', 'has_budget', 'dimension', 'budget');
+	protected $fillable = array('title', 'description', 'has_dimension', 'has_budget', 'dimension', 'budget', 'type');
 	public function __construct()
 	{
 		$this->title = '';

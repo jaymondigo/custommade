@@ -1,0 +1,99 @@
+<div class="col-md-12">
+    <div class="grid simple col-md-12">
+        <div class="grid-title no-border">
+            <h3>Create a<span class="semi-bold"> Project</span></h3>
+        </div>
+        <div class="grid-body no-border "> <br>
+            <div class="alert alert-info">
+                <button class="close" data-dismiss="alert" onclick="$(this).parent().remove();"></button>
+                Your project post is published to the job board where it's viewed by our makers. Be sure to     update your post whenever new decisions are made.
+            </div>
+            <form id="form_iconic_validation" name="form" ng-submit="update(project)" novalidate="novalidate">
+                <input type="hidden" ng-value="{{form.$invalid==false ? '1' : '0'}}" name="type" ng-model="project.type"/>
+                <div class="row form-row">
+                    <h3 style="margin-left: 14px;margin-top: -5px;">Project <span class="semi-bold">Information</span></h3>
+                    <div class="col-md-6" ng-class="{'has-error': form.title.$dirty && form.title.$invalid}">
+                        <label class="form-label">Project Title</label>
+                        <input type="text"  required ng-model="project.title" name="title" placeholder="Dining Table" class="form-control has-instructions" tooltip-html-unsafe="<div class='form_tip' style='top: 76px;'><p class='form_tip_text'>Specify the type of object (you can specify size and materials separately). If you need help, simply start typing and we willll make recommendations.</p> <div class='form_tip_heading'>Examples:</div><ul class='form_tip_list'><li>Dining table</li><li>Engagement ring</li><li>Men wedding band</li>  </ul></div>" popover-title="">
+                        <span class="error" ng-show="form.title.$error.required&&form.title.$dirty">
+                        <label for="title" class="error">This field is required.</label>
+                        </span>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-row" ng-class="{'has-error': form.description.$dirty&&form.description.$invalid}">
+                    <label class="form-label">Project Description</label>
+                    <textarea placeholder="" class="form-control has-instructions" required ng-model="project.description" name="description" style="height: 142px;"  tooltip-html-unsafe="<div class='form_tip' style='top: 76px;'><p class='form_tip_text'>Where possible, be specific about your preferred style, finishing touches, how your completed project will be used, and/or your budget. This is also the chance to let the Maker community know why your project is special to you. If you're still in the 'concept' phase and seeking project guidance or inspiration, include that information as well.</p></div>"
+                    title="" ></textarea>
+                    <span class="error" ng-show="form.description.$error.required&&form.description.$dirty">
+                    <label for="title" class="error">This field is required.</label>
+                    </span>
+                </div>
+                <hr>
+                <div class="form-group col-md-12" style="padding-left:0px;">
+                    <h3>What <span class="semi-bold">size and dimensions</span> do you need?</h3>
+                    <div class="radio radio-success" >
+                        <div class="col-md-6" ng-show="project.has_dimension" style="position: absolute;margin-top: -11px;padding-left: 1px;margin-left: 23px;z-index: 100;">
+                            <input type="text" ng-model="project.dimension" name="dimension" placeholder="Dimensions, measurement, sizing info" tooltip-html-unsafe="<div class='form_tip' style='top: 76px;'><p class='form_tip_text'>Be as specific as possible; even general guidance helps. Not sure about your size requirements? Let us know, so interested Makers can ask the right questions to ensure you get exactly what you want.</p><div class='form_tip_heading'>Examples:</div>  <ul class='form_tip_list'>    <li>8' x 3' x 3'</li>    <li>Seats 8 people</li>    <li>Size 7</li>  </ul></div>"
+                            title=""  
+                            class="form-control has-instructions">
+                        </div>
+                        <input id="yes" type="radio" name="optionyes" ng-model="project.has_dimension" value="true" checked="checked" >
+                        <label for="yes">I know the size</label> <br>
+                        <input id="no" type="radio" name="optionyes" ng-model="project.has_dimension" value="false">
+                        <label for="no">I need a Maker to help me with the size</label>
+                    </div>
+                </div>
+                <hr>
+                <div class="row form-row">
+                     <div class="col-md-8">
+              <div class="grid simple">
+                <div class="grid-title no-border">
+                  <h4>Add <span class="semi-bold">Photos</span></h4>
+                </div>
+                <div class="grid-body no-border">
+                  <div class="row-fluid"> 
+                     <!-- File Upload -->
+                    <div id="project_photos" class="dropzone">
+                    </div>
+                    <!-- End File Upload -->
+                  </div>
+                </div>
+              </div>
+            </div>
+                </div>
+                <hr>
+                <div class="form-group col-md-12" style="padding-left:0px;">
+                    <h3>Project <span class="semi-bold">Budget</span></h3>
+                    <div class="row-fluid">
+                        <div class="checkbox check-success  ">
+                            <input id="has_budget" type="checkbox" name="has_budget" ng-model="project.has_budget" value="true" checked="checked">
+                            <label for="has_budget">I am working with a budget</label>
+                        </div>
+                    </div>
+                    <div ng-show="project.has_budget">
+                        <div class="row">
+                            <div class="col-md-4" ng-class="{'has-error': form.budget.$dirty && form.budget.$invalid}">
+                                <div class="input-group">
+                                    <span class="input-group-addon">$</span>
+                                    <input type="text" placeholder="100" class="form-control" name="budget" ng-model="project.budget">
+                                    <span class="input-group-addon">.00</span>
+                                </div>
+                                <span class="error" ng-show="form.budget.$dirty">
+                                <label for="title" class="error" ng-show="form.budget.$error.integer">This field should be integer.</label>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions" style="margin-top: 125px;">
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-warning btn-cons" ng-click="saveDraft(project)"><i class="icon-book"></i> Save as draft</button>
+                            <button type="submit" ng-disabled="form.$invalid" class="btn btn-success btn-cons"><i class="icon-ok"></i> Preview</button>
+                            <a ui-sref="buyer.projects" class="btn btn-white btn-cons">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
