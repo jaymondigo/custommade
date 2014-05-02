@@ -6,7 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'AddAvatarFieldsToUsersTable' => $baseDir . '/app/database/migrations/2014_02_24_084949_add_avatar_fields_to_users_table.php',
+    'AddAvatarFieldsToUsersTable' => $baseDir . '/app/database/migrations/2014_04_9_084949_add_avatar_fields_to_users_table.php',
     'AddColumnAddressesToTableusers' => $baseDir . '/app/database/migrations/2014_02_23_134911_add_column_addresses_to_tableusers.php',
     'AddColumnAddressesToUsers' => $baseDir . '/app/database/migrations/2014_03_31_134208_add_column_addresses_to_users.php',
     'AddColumnToTableProject' => $baseDir . '/app/database/migrations/2014_02_23_111719_add_column_to_table_project.php',
@@ -242,6 +242,7 @@ return array(
     'CoffeeScript\\yy_Value' => $vendorDir . '/coffeescript/coffeescript/src/CoffeeScript/yy/Value.php',
     'CoffeeScript\\yy_While' => $vendorDir . '/coffeescript/coffeescript/src/CoffeeScript/yy/While.php',
     'ConfideSetupUsersTable' => $baseDir . '/app/database/migrations/2014_03_05_160011_confide_setup_users_table.php',
+    'CreateTableFavoriteProject' => $baseDir . '/app/database/migrations/2014_04_14_235424_create_table_favorite_project.php',
     'CreateTableProject' => $baseDir . '/app/database/migrations/2014_02_21_051508_create_table_project.php',
     'CreateTableProjectPhoto' => $baseDir . '/app/database/migrations/2014_02_23_040828_create_table_project_photo.php',
     'CreateUsersTable' => $baseDir . '/app/database/migrations/2014_01_21_213646_create_users_table.php',

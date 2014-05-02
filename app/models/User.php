@@ -87,5 +87,8 @@ class User extends ConfideUser {
                 'original'=>$this->avatar->url(),
             );
     }
+    public function favoriteProjects(){
+        return $this->hasMany('FavoriteProject');
+    }
 }
     

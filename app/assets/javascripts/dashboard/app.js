@@ -78,12 +78,14 @@ window.DashApp = angular.module('dash_app', ['ui.router', 'ngResource', 'ngSanit
                     controller: 'EditProjectCtrl'
                 })
                 .state('buyer.view_project', {
-                    url: baseRoute + 'buyer/project/:id',
+                    url: baseRoute + 'buyer/project/:id/:slug',
                     template: JST[path + 'buyer/project/_view'],
                     controller: 'ViewProjectCtrl'
                 })
                 .state('buyer.favorites', {
-                    url: ''
+                    url: baseRoute + 'buyer/favorites',
+                    template: JST[path + 'buyer/project/favorites'],
+                    controller: 'ListFavoritesCtrl'
                 }).state('buyer.reviews', {
                     url: ''
                 })

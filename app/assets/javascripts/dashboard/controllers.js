@@ -163,6 +163,13 @@ DashApp
                 $scope.projects.splice(i, 1);
             }
         }
+    ]).controller('ListFavoritesCtrl', ['$scope', 'Project',
+        function($scope, Project) {
+            $scope.projects = Project.query({
+                params: 'favorites'
+            });
+
+        }
     ]).controller('NewProjectCtrl', ['$scope', '$templateCache', '$location', 'Project',
         function($scope, $templateCache, $location, Project) {
             $scope.$parent.navs.projects.childNavs = [{
@@ -236,15 +243,22 @@ DashApp
             }
         }
     ])
-    .controller('ViewProjectCtrl', ['$scope', '$stateParams', 'Project',
-        function($scope, $stateParams, Project) {
+    .controller('ViewProjectCtrl', ['$scope', '$stateParams', 'Project', '$http',
+        function($scope, $stateParams, Project, $http) {
             id = $stateParams.id;
             $scope.project = Project.get({
                 id: id
             });
 
-            $scope.edit = function(project) {
+            $scope.edit = function(project) {}
 
+            $scope.markFavorite = function(id) {
+                if ($scope.project.is_favorite)
+                    return false;
+                $http.post('mark-favorite', {
+                    project_id: id
+                });
+                $scope.project.is_favorite = true;
             }
         }
     ])

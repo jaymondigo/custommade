@@ -69,3 +69,13 @@ notification[type='error'] .notification-messages{
 notification .message-description{
     font-size: 15px;
 }
+#mark-fav{
+    cursor: pointer;
+    color:  #CE9292;
+}
+#mark-fav:hover{
+    color:  #8B1111;
+}
+#mark-fav.active{
+    color: #8B1111;
+}

@@ -8,6 +8,7 @@
 <meta charset="utf-8" />
 <title>Custom Maker | Imagine. Collaborate. Create</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<link rel="icon" href="assets/public/img/logo.png" type="image/x-icon">
 <meta content="" name="description" />
 <meta content="" name="author" />
 

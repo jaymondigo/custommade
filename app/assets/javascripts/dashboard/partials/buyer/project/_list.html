@@ -17,7 +17,7 @@
                             </ul>
                         </div>
                         <h4>
-                        <a ui-sref="buyer.view_project({id: project.slug})" class="muted">
+                        <a ui-sref="buyer.view_project({id: project.id, slug: project.slug})" class="muted">
                         <i class="icon-time"></i> 
                         posted on {{project.created_at | dateToISO | date:'MMM dd, yyyy @ h:mma'}}
                         </a>

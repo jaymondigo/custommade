@@ -9,6 +9,11 @@ class ProjectController extends \BaseController {
 	 */
 	public function index()
 	{
+		if(Input::has('params')&&Input::get('params')=='favorites'){
+			$objs = FavoriteProject::where('user_id', Auth::user()->id)->get(); 
+			return $objs;
+		}
+
 		return Project::where('user_id', Auth::user()->id)->get();
 	}
 
@@ -41,7 +46,14 @@ class ProjectController extends \BaseController {
 		$obj->dimension = Input::get('dimension');
 		$obj->budget = Input::get('budget');
 		$obj->type = $type !='' ? $type : 'published';
-		$obj->save();
+		$obj->save(); 
+		$photosId = Session::has('pIds') ? Session::get('pIds') : array();
+		foreach($photosId as $i => $d){
+			$photo = ProjectPhoto::find($d); 
+			$photo->project_id = $obj->id;
+			$photo->save();
+		}
+		Session::forget('pIds');
 		return $obj;
 	}
 
@@ -67,8 +79,12 @@ class ProjectController extends \BaseController {
 	 * @return Response
 	 */
 	public function edit($id)
-	{
-		return Project::find($id);
+	{ 
+		$p = Project::find($id);
+		if($p->user_id!=Auth::user()->id)
+			return array('status'=>'403','messaeg'=>'Permission denied');
+
+		return $p;
 	}
 
 	/**
@@ -86,7 +102,17 @@ class ProjectController extends \BaseController {
 		$inputs['type'] = $type !='' ? $type : 'published'; 
 		$obj = Project::find($id);
 
+		if($obj->user_id != Auth::user()->id)
+			return array('status'=>'403','messaeg'=>'Permission denied');
+
 		$obj->update($inputs);
+
+		$photosId = Session::has('pIds') ? Session::get('pIds') : array();
+		foreach($photosId as $i => $d){
+			$photo = ProjectPhoto::update(array('id'=>$d, 'project_id'=>$obj->id));
+		}
+		Session::forget('pIds');
+
 		return $obj;
 	}
 
@@ -105,13 +131,28 @@ class ProjectController extends \BaseController {
 	public function photo(){  
 
 		$obj = new ProjectPhoto();
-		
-
-		return $obj;
+		$obj->photo=Input::file('photo');
+		$obj->save();      
+		$pIds = Session::has('pIds') ? Session::get('pIds') : array();
+		array_push($pIds, $obj->id);
+ 		Session::put('pIds', $pIds);
+ 		return Session::get('pIds'); 
 	}
 
 	public function deletePhoto(){
-		ProjectPhoto::delete(Input::get('id'));
+		$obj = ProjectPhoto::find(Input::get('id'));
+		if($obj->project->user_id!=Auth::user()->id)
+			return array('status'=>'403','messaeg'=>'Permission denied');
+
+		return $obj->delete(Input::get('id'));
+	}
+
+	public function markFavorite(){
+		
+		$obj = new FavoriteProject();
+		$obj->user_id = Auth::user()->id;
+		$obj->project_id = Input::get('project_id');
+		$obj->save();
 	}
 
 }

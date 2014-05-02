@@ -91,7 +91,7 @@
 
                             </div>
                             <div class="grid-body no-border " style="height: 610px;">
-                                <h2><i class =" icon-ok"></i> You started a new project!</h2>
+                                <h2><i class =" icon-heart" id="mark-fav" title="{{}}" ng-click="markFavorite(project.id)" ng-disabled="project.is_favorite" ng-class="{active: project.is_favorite}"></i> You started a new project!</h2>
                                 <a ui-sref="buyer.view_project({id: project.id})"><i class ="icon-time"></i>&nbsp; {{project.created_at | dateToISO | date:'MMM dd, yyyy @ h:mma'}}</span><br><br>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1"><strong>Title</strong></label>
@@ -105,8 +105,8 @@
                                     <label for="exampleInputEmail1"><strong>Budget</strong></label>
                                     <p> <span>Under ${{project.budget}}</span></p>
                                 </div>
-                                <div class="form-actions" style="margin-top: 70px;">
-                                    <div class="pull-right">
+                                <div class="form-actions" style="margin-top: 70px;"> 
+                                    <div class="pull-right" ng-show="project.user_id==currentUser.id">
                                         <a ui-sref="buyer.edit_project({id: project.id})" class="btn btn-primary btn-cons"><i class="icon-ok"></i> Edit Project</a> 
                                     </div>
                                 </div>

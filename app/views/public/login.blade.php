@@ -1,6 +1,7 @@
 @extends('base')
 @section('head')
 <title>Dream Builder Solutions | Login</title>
+<link rel="icon" href="assets/public/img/logo.png" type="image/x-icon">
 {{stylesheet_link_tag('public')}}
 @stop
 @section('body')
